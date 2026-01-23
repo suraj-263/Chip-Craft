@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Chip Craft</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* CSS STYLES */
+        :root {
+            --primary: #007bff;
+            --secondary: #6c757d;
+            --dark: #212529;
+            --light: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+       header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: rgb(203, 179, 238);
+    padding: 15px 0;
+    z-index: 1000;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+}
+
+.navbar {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* About Hero Section */
+        .about-hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 80px 10%;
+            background: var(--light);
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h1 {
+            font-size: 3rem;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 20px 20px 0px var(--primary);
+        }
+
+        /* Mission & Vision Section */
+        .mission-vision {
+            padding: 100px 10%;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .card {
+            padding: 40px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        
+        .btn-white {
+            display: inline-block;
+            padding: 12px 35px;
+            background: #fff;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            text-align: center;
+            background: var(--dark);
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-text h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">CHIP CRAFT</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="iot.html">Projects</a></li>
+                <li><a href="#" class="active">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about-hero">
+        <div class="about-text">
+            <h1>Our Story</h1>
+            <p>At Chip Craft, we believe that education in technology should be accessible, hands-on, and inspiring. We started as a small project to help students and hobbyists bridge the gap between theory and real-world circuit building.</p>
+            <p>Whether it's IOT, Arduino, or complex Circuit Design, we are here to provide the blueprints for your next big innovation.</p>
+        </div>
+        <div class="about-image">
+            <img src="extra.png" alt="Electronics Workshop">
+        </div>
+    </section>
+
+    <section class="mission-vision">
+        <h2>Building Brighter Futures</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-bullseye"></i>
+                <h3>Our Mission</h3>
+                <p>To empower the next generation of engineers by providing high-quality, free resources for electronics and programming.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-eye"></i>
+                <h3>Our Vision</h3>
+                <p>To become a global hub for DIY electronics where anyone can learn to build smart systems from scratch.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-heart"></i>
+                <h3>Our Values</h3>
+                <p>Open source sharing, community-driven learning, and technical precision in every circuit we design.</p>
+            </div>
+        </div>
+    </section>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chip Craft Footer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* CSS STYLES */
+        :root {
+            --footer-bg: #111111;
+            --footer-text: #b0b0b0;
+            --footer-heading: #ffffff;
+            --accent-blue: #007bff;
+            --footer-bottom-bg: #000000;
+            --transition: 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Main Footer Container */
+        .site-footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 80px 0 0;
+            border-top: 5px solid var(--accent-blue);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        /* Column Headers */
+        .footer-col h3 {
+            color: var(--footer-heading);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 120px;
+            bottom: -10px;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-blue);
+        }
+
+        /* Brand/About Section */
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            display: block;
+            text-decoration: none;
+        }
+        .footer-logo span { color: var(--accent-blue); }
+        .footer-col p { line-height: 1.8; font-size: 0.95rem; }
+
+        .social-links {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #222;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        /* Navigation Links */
+        .footer-col ul {
+            list-style: none;
+            padding: 10;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-blue);
+            padding-left: 8px;
+        }
+
+        /* Contact Details */
+        .contact-info div {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info i {
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            margin-top: 4px;
+            margin-left: 40px;
+        }
+
+        /* Footer Bottom Bar */
+        .footer-bottom {
+            background-color: var(--footer-bottom-bg);
+            padding: 25px 0;
+            margin-top: 60px;
+            border-top: 1px solid #222;
+        }
+
+        .footer-bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom p { font-size: 0.85rem; margin: 0; }
+        
+        .back-to-top {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-to-top:hover { color: var(--accent-blue); }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .site-footer { text-align: center; }
+            .footer-col h3::after { left: 50%; transform: translateX(-50%); }
+            .social-links, .contact-info div { justify-content: center; }
+            .footer-bottom-content { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+   
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <div class="footer-col">
+                <a href="#" class="footer-logo">CHIP <span>CRAFT</span></a>
+                <p>Building Brighter Futures Through Smarter Learning. Your ultimate destination for IOT And Arduino projects.</p>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/channel/UCNMYiU8uqKBqTtRFdk5_Nag" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="iot.html">IOT Projects</a></li>
+                    <li><a href="arduino.html">Arduino Projects</a></li>
+                    <li><a href="circuit.html">Circuit Diagrams</a></li>
+                    <li><a href="about.html">About us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <div class="contact-info">
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <p>surajraut2040@gmail.com</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+91 7427989676</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Ramnagar, Contai, West Bengal, India</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2026 Chip Craft | All Rights Reserved.</p>
+                <a href="#top" class="back-to-top">Back to top <i class="fas fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</body>
+</html>

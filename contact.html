@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Chip Craft</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <style>
+        :root {
+            --primary-blue: #007bff;
+            --dark: #000000;
+            --light-bg: #b9dafa;
+            --text-muted: #6c757d;
+            --footer-bg: #111111;
+            --footer-text: #b0b0b0;
+            --footer-heading: #ffffff;
+            --accent-blue: #a6d0fd;
+            --footer-bottom-bg: #000000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body { background-color: #c3fdb1; color: var(--dark); line-height: 1.6; }
+
+        /* Navbar Styling */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background: wheat;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 10px 30px;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(5, 255, 47, 0.3);
+        }
+
+        .navbar { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: 700; color: var(--primary-blue); text-decoration: none; }
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; }
+        .nav-links a.active { color: var(--primary-blue); }
+
+        /* Contact Header */
+        .contact-header { text-align: center; padding: 140px 20px 60px; background: var(--light-bg); }
+        .contact-header h1 { font-size: 2.5rem; margin-bottom: 15px; }
+        .contact-header p { color: black; max-width: 600px; margin: 0 auto; }
+
+        /* Form & Info Section */
+        .contact-container { max-width: 1100px; margin: 60px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 50px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
+        
+        .btn-submit {
+            background: var(--primary-blue);
+            color: #ffffff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+        .btn-submit:disabled { background: #a0c4ff; cursor: not-allowed; }
+
+        /* Footer Styling */
+        .site-footer { background-color: var(--footer-bg); color: var(--footer-text); padding: 60px 0 0; border-top: 5px solid var(--accent-blue); margin-top: 50px; }
+        .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 25px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-col h3 { color: var(--footer-heading); margin-bottom: 25px; position: relative; }
+        .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 50px; height: 3px; background: var(--accent-blue); }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: var(--footer-text); text-decoration: none; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--accent-blue); padding-left: 5px; }
+        
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
+        .social-links a { width: 35px; height: 35px; background: #3d3d3d; color: #ffffff; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; }
+        .social-links a:hover { background: var(--accent-blue); transform: translateY(-3px); }
+
+        .footer-bottom { background: var(--footer-bottom-bg); padding: 20px 0; margin-top: 40px; text-align: center; }
+        
+        @media (max-width: 850px) {
+            .contact-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">CHIP CRAFT</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="iot.html">Projects</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#" class="active">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact-header">
+        <h1>Contact us</h1>
+        <p>Contact us about anything related to our company or services. We'll do our best to get back to you as soon as possible.</p>
+    </section>
+
+    <main class="contact-container">
+        <div class="contact-form">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" name="from_name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" name="phone_number" placeholder="Your Phone Number">
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" name="user_email" placeholder="Your Email Address" required>
+                </div>
+                <div class="form-group">
+                    <label>Subject *</label>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group">
+                    <label>Question *</label>
+                    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" id="submit-btn" class="btn-submit">Submit Message</button>
+            </form>
+        </div>
+
+        <div class="contact-info">
+            <div class="info-card">
+                <h3>Our Company</h3>
+                <div class="info-item"><i class="fas fa-map-marker-alt"></i><p>Ramnagar, Contai, West Bengal, INDIA</p></div>
+                <div class="info-item"><i class="fas fa-phone-alt"></i><p>+91 7427989676</p></div>
+                <div class="info-item"><i class="fas fa-envelope"></i><p>surajraut2040@gmail.com</p></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <a href="#" class="logo" style="color:#fffefe;">CHIP <span style="color:var(--accent-blue);">CRAFT</span></a>
+                <p style="margin-top:15px;">Building Brighter Futures Through Smarter Learning. Your ultimate destination for IOT And Arduino projects.</p>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/channel/UCNMYiU8uqKBqTtRFdk5_Nag" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="iot.html">Projects</a></li>
+                    <li><a href="about.html">About us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <p><i class="fas fa-envelope" style="color:var(--accent-blue);"></i> surajraut2040@gmail.com</p>
+                <p><i class="fas fa-phone-alt" style="color:var(--accent-blue); margin-top:10px;"></i> +91 7427989676</p>
+                <p><i class="fas fa-map-marker-alt" style="color:var(--accent-blue); margin-top:10px;"></i> Ramnagar, Contai, West Bengal.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Chip Craft | All Rights Reserved. <a href="#top" style="color:#fff; text-decoration:none; margin-left:20px;">Back to top ↑</a></p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            emailjs.init({
+                publicKey: "Y92a-ijJX3pv7bJAQ",
+            });
+        })();
+
+        window.onload = function() {
+            const contactForm = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+                const serviceID = 'service_88x6ryq';
+                const templateID = 'template_xqixhso';
+
+                emailjs.sendForm(serviceID, templateID, this)
+                    .then(() => {
+                        alert('Success! Your message has been sent to Chip Craft.');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = 'Submit Message';
+                        contactForm.reset();
+                    }, (error) => {
+                        alert('Error sending message: ' + error.text);
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = 'Submit Message';
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Others | Chip Craft</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* CSS STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styling */
+   header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: rgb(183, 168, 247);
+    padding: 15px 0;
+    z-index: 1000;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+}
+
+.navbar {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #007bff;
+        }
+
+        /* Page Banner */
+        .page-banner {
+            background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .page-banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Projects Section */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .others-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #007bff;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #222;
+        }
+
+        .card-content p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-more {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .btn-more:hover {
+            background: #007bff;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-socials {
+            margin-bottom: 20px;
+        }
+
+        .footer-socials a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: #007bff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">CHIP CRAFT</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="iot.html">IOT Project</a></li>
+                <li><a href="arduino.html">Arduino Project</a></li>
+                <li><a href="circuit.html">Circuit Diagram</a></li>
+                <li><a href="#" class="active">Others</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-banner">
+        <h1>Other Projects & Resources</h1>
+        <p>A collection of various electronics experiments and DIY tutorials.</p>
+    </section>
+
+    <div class="container">
+        <main class="others-grid">
+            
+            <article class="card">
+                <img src="arduino.png" alt="Robotics" class="card-img">
+                <div class="card-content">
+                    <h3>Basic Robotics</h3>
+                    <p>Explore the fundamentals of building simple wheeled robots and motor controllers.</p>
+                    <a href="#" class="btn-more">Read More</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="extra2.png" alt="Components" class="card-img">
+                <div class="card-content">
+                    <h3>Component Guides</h3>
+                    <p>Deep dive into transistors, capacitors, and ICs used in modern hobbyist electronics.</p>
+                    <a href="#" class="btn-more">Read More</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="circuit.png" alt="Soldering" class="card-img">
+                <div class="card-content">
+                    <h3>Soldering Tips</h3>
+                    <p>Master the art of soldering with our step-by-step guide for beginners and pros.</p>
+                    <a href="#" class="btn-more">Read More</a>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chip Craft Footer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* CSS STYLES */
+        :root {
+            --footer-bg: #111111;
+            --footer-text: #b0b0b0;
+            --footer-heading: #ffffff;
+            --accent-blue: #007bff;
+            --footer-bottom-bg: #000000;
+            --transition: 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Main Footer Container */
+        .site-footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 80px 0 0;
+            border-top: 5px solid var(--accent-blue);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        /* Column Headers */
+        .footer-col h3 {
+            color: var(--footer-heading);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 120px;
+            bottom: -10px;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-blue);
+        }
+
+        /* Brand/About Section */
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            display: block;
+            text-decoration: none;
+        }
+        .footer-logo span { color: var(--accent-blue); }
+        .footer-col p { line-height: 1.8; font-size: 0.95rem; }
+
+        .social-links {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #222;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        /* Navigation Links */
+        .footer-col ul {
+            list-style: none;
+            padding: 10;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-blue);
+            padding-left: 8px;
+        }
+
+        /* Contact Details */
+        .contact-info div {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info i {
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            margin-top: 4px;
+            margin-left: 40px;
+        }
+
+        /* Footer Bottom Bar */
+        .footer-bottom {
+            background-color: var(--footer-bottom-bg);
+            padding: 25px 0;
+            margin-top: 60px;
+            border-top: 1px solid #222;
+        }
+
+        .footer-bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom p { font-size: 0.85rem; margin: 0; }
+        
+        .back-to-top {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-to-top:hover { color: var(--accent-blue); }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .site-footer { text-align: center; }
+            .footer-col h3::after { left: 50%; transform: translateX(-50%); }
+            .social-links, .contact-info div { justify-content: center; }
+            .footer-bottom-content { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+   
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <div class="footer-col">
+                <a href="#" class="footer-logo">CHIP <span>CRAFT</span></a>
+                <p>Building Brighter Futures Through Smarter Learning. Your ultimate destination for IOT And Arduino projects.</p>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/channel/UCNMYiU8uqKBqTtRFdk5_Nag" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="iot.html">IOT Projects</a></li>
+                    <li><a href="arduino.html">Arduino Projects</a></li>
+                    <li><a href="circuit.html">Circuit Diagrams</a></li>
+                    <li><a href="about.html">About us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <div class="contact-info">
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <p>surajraut2040@gmail.com</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+91 7427989676</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Ramnagar, Contai, West Bengal, India</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2026 Chip Craft | All Rights Reserved.</p>
+                <a href="#top" class="back-to-top">Back to top <i class="fas fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</body>
+</html>

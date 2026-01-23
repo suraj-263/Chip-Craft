@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOT Code Repository</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-blue: #007bff;
+            --bg-light: #f8f9fa;
+            --code-bg: #1e1e1e; /* VS Code Style */
+            --text-dark: #333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+       /* Navbar */
+        header {
+            position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.93); /* Semi-transparent */
+    backdrop-filter: blur(50px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px; /* Pill shape */
+    padding: 10px 30px;
+    z-index: 1000;
+    box-shadow: 0 2px 22px rgb(72, 255, 0);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            font-size: 20px;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+        }
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    padding: 110px 50px 50px;
+    background: #bdd2e9;
+    border-bottom: 1px solid #efc3c3;
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+    color: #000000;
+}
+
+.page-header p {
+    font-size: medium;
+    color: #000000;
+    margin-top: 10px;
+}
+
+        /* Page Content */
+        .container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            color: #222;
+        }
+
+        /* Code Card */
+        .code-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .code-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #222;
+            border-left: 5px solid var(--primary-blue);
+            padding-left: 15px;
+        }
+
+        .code-info p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        /* Code Block Area */
+        .code-wrapper {
+            position: relative;
+            background: var(--code-bg);
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        pre {
+            margin: 0;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #dcdcaa; /* Syntax highlight color */
+        }
+
+        /* Syntax Highlight Colors */
+        .keyword { color: #569cd6; }
+        .comment { color: #6a9955; font-style: italic; }
+        .string { color: #ce9178; }
+        .function { color: #dcdcaa; }
+
+        /* Copy Button */
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 6px 15px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+
+        .copy-btn.copied {
+            background: #28a745;
+            border-color: #28a745;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .page-title h1 { font-size: 1.8rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+  <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">CHIP CRAFT</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Icode.html" style="color:blue">IOT Code</a></li>
+                <li><a href="iot.html">IoT Projects</a></li> 
+                <li><a href="arduino.html">Arduino Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>IOT Projects</h1>
+        <p>Explore our latest Internet of Things innovations and Source Code.</p>
+    </section>
+<!-- Code start here -->
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Light Control By Voice Command</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-1')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-1"><code>
+<span>
+// ESP32 Google Assistant + Alexa + Manual Home Automation with Sinric Pro
+
+#include Arduino.h>                          //ArduinoJson Library
+
+#include WiFi.h>
+
+#include "SinricPro.h"                        //SinricPro Library
+
+#include "SinricProSwitch.h"
+
+#include map>
+
+// Uncomment the following line to enable serial debug output
+
+//#define ENABLE_DEBUG
+
+#ifdef ENABLE_DEBUG
+
+       #define DEBUG_ESP_PORT Serial
+
+       #define NODEBUG_WEBSOCKETS             
+
+       #define NDEBUG
+
+#endif
+
+#define WIFI_SSID         "*****************"      //Enter Wi-Fi Name
+
+#define WIFI_PASS         "****************"      //Enter Wi-Fi Password
+
+#define APP_KEY           "********************************"                  //Enter APP-KEY
+
+#define APP_SECRET        "*****************************************************"     //Enter APP-SECRET
+
+//Enter the device IDs here
+
+#define device_ID_1   "************************"  //SWITCH 1 ID
+
+#define device_ID_2   "************************"  //SWITCH 2 ID
+
+#define device_ID_3   "*************************"  //SWITCH 3 ID
+
+// define the GPIO connected with Relays and switches
+
+#define RelayPin1 15  //D15
+
+#define RelayPin2 2  //D2
+
+#define RelayPin3 4  //D4
+
+#define SwitchPin1 23  //D23
+
+#define SwitchPin2 22  //D22
+
+#define SwitchPin3 21  //D21
+
+#define wifiLed   2   //D2
+
+//uncomment the following line if you use Push Buttons to toggle Relays
+
+//#define TACTILE_BUTTON 1
+
+#define BAUD_RATE   9600
+
+#define DEBOUNCE_TIME 250
+
+typedef struct {      // struct for the std::map below
+
+  int relayPIN;
+
+  int flipSwitchPIN;
+
+} deviceConfig_t;
+
+std::map<String, deviceConfig_t> devices = {
+
+    //{deviceId, {relayPIN,  flipSwitchPIN}}
+
+    {device_ID_1, {  RelayPin1, SwitchPin1 }},
+
+    {device_ID_2, {  RelayPin2, SwitchPin2 }},
+
+    {device_ID_3, {  RelayPin3, SwitchPin3 }},
+
+};
+
+typedef struct {      // struct for the std::map below
+
+  String deviceId;
+
+  bool lastFlipSwitchState;
+
+  unsigned long lastFlipSwitchChange;
+
+} flipSwitchConfig_t;
+
+std::map<int, flipSwitchConfig_t> flipSwitches;    // this map is used to map flipSwitch PINs to deviceId and handling debounce and last flipSwitch state checks
+
+                                                  // it will be setup in "setupFlipSwitches" function, using informations from devices map
+
+void setupRelays() {
+
+  for (auto &device : devices) {           // for each device (relay, flipSwitch combination)
+
+    int relayPIN = device.second.relayPIN; // get the relay pin
+
+    pinMode(relayPIN, OUTPUT);             // set relay pin to OUTPUT
+
+    digitalWrite(relayPIN, HIGH);
+
+  }
+
+}
+
+void setupFlipSwitches() {
+
+  for (auto &device : devices)  {                     // for each device (relay / flipSwitch combination)
+
+    flipSwitchConfig_t flipSwitchConfig;              // create a new flipSwitch configuration
+
+    flipSwitchConfig.deviceId = device.first;         // set the deviceId
+
+    flipSwitchConfig.lastFlipSwitchChange = 0;        // set debounce time
+
+    flipSwitchConfig.lastFlipSwitchState = false;     // set lastFlipSwitchState to false (LOW)--
+
+    int flipSwitchPIN = device.second.flipSwitchPIN;  // get the flipSwitchPIN
+
+    flipSwitches[flipSwitchPIN] = flipSwitchConfig;   // save the flipSwitch config to flipSwitches map
+
+    pinMode(flipSwitchPIN, INPUT_PULLUP);                   // set the flipSwitch pin to INPUT
+
+  }
+
+}
+
+bool onPowerState(String deviceId, bool &state)
+
+{
+
+  Serial.printf("%s: %s\r\n", deviceId.c_str(), state ? "on" : "off");
+
+  int relayPIN = devices[deviceId].relayPIN; // get the relay pin for corresponding device
+
+  digitalWrite(relayPIN, !state);             // set the new relay state
+
+  return true;
+
+}
+
+void handleFlipSwitches() {
+
+  unsigned long actualMillis = millis();                                          // get actual millis
+
+  for (auto &flipSwitch : flipSwitches) {                                         // for each flipSwitch in flipSwitches map
+
+    unsigned long lastFlipSwitchChange = flipSwitch.second.lastFlipSwitchChange;  // get the timestamp when flipSwitch was pressed last time (used to debounce / limit events)
+
+    if (actualMillis - lastFlipSwitchChange > DEBOUNCE_TIME) {                    // if time is > debounce time...
+
+      int flipSwitchPIN = flipSwitch.first;                                       // get the flipSwitch pin from configuration
+
+      bool lastFlipSwitchState = flipSwitch.second.lastFlipSwitchState;           // get the lastFlipSwitchState
+
+      bool flipSwitchState = digitalRead(flipSwitchPIN);                          // read the current flipSwitch state
+
+      if (flipSwitchState != lastFlipSwitchState) {                               // if the flipSwitchState has changed...
+
+#ifdef TACTILE_BUTTON
+
+        if (flipSwitchState) {                                                    // if the tactile button is pressed
+
+#endif     
+
+          flipSwitch.second.lastFlipSwitchChange = actualMillis;                  // update lastFlipSwitchChange time
+
+          String deviceId = flipSwitch.second.deviceId;                           // get the deviceId from config
+
+          int relayPIN = devices[deviceId].relayPIN;                              // get the relayPIN from config
+
+          bool newRelayState = !digitalRead(relayPIN);                            // set the new relay State
+
+          digitalWrite(relayPIN, newRelayState);                                  // set the trelay to the new state
+
+
+
+          SinricProSwitch &mySwitch = SinricPro[deviceId];                        // get Switch device from SinricPro
+
+          mySwitch.sendPowerStateEvent(!newRelayState);                            // send the event
+
+#ifdef TACTILE_BUTTON
+
+        }
+
+#endif     
+
+        flipSwitch.second.lastFlipSwitchState = flipSwitchState;                  // update lastFlipSwitchState
+
+      }
+
+    }
+
+  }
+
+}
+
+void setupWiFi()
+
+{
+
+  Serial.printf("\r\n[Wifi]: Connecting");
+
+  WiFi.begin(WIFI_SSID, WIFI_PASS);
+
+  while (WiFi.status() != WL_CONNECTED)
+
+  {
+
+    Serial.printf(".");
+
+    delay(250);
+
+  }
+
+  digitalWrite(wifiLed, HIGH);
+
+  Serial.printf("connected!\r\n[WiFi]: IP-Address is %s\r\n", WiFi.localIP().toString().c_str());
+
+}
+
+void setupSinricPro()
+
+{
+
+  for (auto &device : devices)
+
+  {
+
+    const char *deviceId = device.first.c_str();
+
+    SinricProSwitch &mySwitch = SinricPro[deviceId];
+
+    mySwitch.onPowerState(onPowerState);
+
+  }
+
+  SinricPro.begin(APP_KEY, APP_SECRET);
+
+  SinricPro.restoreDeviceStates(true);
+
+}
+
+void setup()
+
+{
+
+  Serial.begin(BAUD_RATE);
+
+  pinMode(wifiLed, OUTPUT);
+
+  digitalWrite(wifiLed, LOW);
+
+  setupRelays();
+
+  setupFlipSwitches();
+
+  setupWiFi();
+
+  setupSinricPro();
+
+}
+
+void loop()
+
+{
+
+  SinricPro.handle();
+
+  handleFlipSwitches();
+
+}</span>
+</code></pre>
+            </div>
+        </section>
+
+<!-- Another code start from Here -->
+
+       <section class="code-card">
+            <div class="code-info">
+                <h2>AC Light Control By Voice Command(Arduino Code)</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-2')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-2"><code>
+<span>
+    // Define pin numbers for convenience
+
+const int pin3 = 3;
+
+const int pin12 = 12;
+
+const int pin4 = 4;
+
+const int pin11 = 11;
+
+const int pin5 = 5;
+
+const int pin10 = 10;
+
+void setup() {
+
+  // Set the pin modes for input (for 3, 4, 5) and output (for 10, 11, 12)
+
+  pinMode(pin3, INPUT);
+
+  pinMode(pin12, OUTPUT);
+
+  pinMode(pin4, INPUT);
+
+  pinMode(pin11, OUTPUT);
+
+  pinMode(pin5, INPUT);
+
+  pinMode(pin10, OUTPUT);
+
+}
+
+void loop() {
+
+  // Check if the signal on pins 3, 4, or 5 is high
+
+  if (digitalRead(pin3) == HIGH) {
+
+    digitalWrite(pin12, HIGH);
+
+  } else {
+
+    digitalWrite(pin12, LOW);
+
+  }
+
+  if (digitalRead(pin4) == HIGH) {
+
+    digitalWrite(pin11, HIGH);
+
+  } else {
+
+    digitalWrite(pin11, LOW);
+
+  }
+
+  if (digitalRead(pin5) == HIGH) {
+
+    digitalWrite(pin10, HIGH);
+
+  } else {
+
+    digitalWrite(pin10, LOW);
+
+  }
+
+  // Add a small delay to debounce the inputs
+
+  delay(50);
+
+}</span>
+</code></pre>
+            </div>
+        </section>
+
+        <!-- Another code start from Here -->
+        
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Smart Gas & Fire Detection System</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-3')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-3"><code>
+                 <span>
+#include Adafruit_GFX.h>                     // Install this library
+
+#include Adafruit_SSD1306.h>              // Install this library
+
+#include DHT.h>                              // Install this library
+
+// OLED Display Settings
+
+#define SCREEN_WIDTH 128
+
+#define SCREEN_HEIGHT 64
+
+#define OLED_RESET    -1
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+// DHT11
+
+#define DHTPIN 4
+
+#define DHTTYPE DHT11
+
+DHT dht(DHTPIN, DHTTYPE);
+
+// Sensors Analog Pins
+
+#define MQ2_PIN 34
+
+#define MQ6_PIN 35
+
+#define MQ135_PIN 32
+
+#define FLAME_PIN 33
+
+#define BATTERY_PIN 36  // ADC1_CH0 (VP)
+
+// Voltage divider resistors (R1=100k, R2=100k)
+
+#define BATTERY_RATIO 2.0
+
+#define ADC_RESOLUTION 4095.0
+
+#define REF_VOLTAGE 3.3
+
+//BUZZER
+
+#define BUZZER_PIN 5
+
+void setup() {
+
+  Serial.begin(115200);
+
+  dht.begin();
+
+ // Initialize OLED
+
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+
+    Serial.println(F("SSD1306 allocation failed"));
+
+    while (1);
+
+  }
+
+  display.clearDisplay();
+
+ // Sensor pins
+
+  pinMode(FLAME_PIN, INPUT);
+
+  pinMode(BUZZER_PIN, OUTPUT);
+
+}
+
+void loop() {
+
+  // Read Sensors
+
+  float temperature = dht.readTemperature();
+
+  float humidity = dht.readHumidity();
+
+  int mq2 = analogRead(MQ2_PIN);
+
+  int mq6 = analogRead(MQ6_PIN);
+
+  int mq135 = analogRead(MQ135_PIN);
+
+  int flame = digitalRead(FLAME_PIN);
+
+  //BUZZER
+
+    if (flame == LOW) { // Flame detected
+
+    digitalWrite(BUZZER_PIN, HIGH);
+
+    Serial.println("Flame detected! Buzzer ON.");
+
+    display.println("Buzzer ON.");
+
+  } else {
+
+    digitalWrite(BUZZER_PIN, LOW);
+
+    Serial.println("No flame. Buzzer OFF.");
+
+    display.println("Buzzer OFF.");
+
+  }
+
+  // Battery voltage
+
+  int rawADC = analogRead(BATTERY_PIN);
+
+  float batteryVolt = (rawADC / ADC_RESOLUTION) * REF_VOLTAGE * BATTERY_RATIO;
+
+  // Serial Monitor
+
+  Serial.printf("Temp: %.1f C, Humidity: %.1f %%\n", temperature, humidity);
+
+  Serial.printf("MQ2: %d, MQ6: %d, MQ135: %d, Flame: %s\n", mq2, mq6, mq135, flame == LOW ? "DETECTED" : "Safe");
+
+  Serial.printf("Battery Voltage: %.2f V\n", batteryVolt);
+
+ // OLED Display
+
+  display.clearDisplay();
+
+  display.setTextSize(1);
+
+  display.setTextColor(SSD1306_WHITE);
+
+  display.setCursor(0, 0);
+
+  display.printf("Temp:%.1f C Hum:%.1f%%\n", temperature, humidity);
+
+  display.printf("MQ2: %d\n", mq2);
+
+  display.printf("MQ6: %d\n", mq6);
+
+  display.printf("MQ135: %d\n", mq135);
+
+  display.printf("Flame: %s\n", flame == LOW ? "ALERT!" : "Normal");
+
+  display.printf("Battery: %.2f V\n", batteryVolt);
+
+  display.display();
+
+  delay(2000); // Refresh every 2 seconds
+
+}</span>
+</code></pre>
+            </div>
+        </section>
+
+<!-- Another code start from Here -->
+
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Smart Agriculture System</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-4')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-4"><code>
+<span>
+#include Adafruit_GFX.h>              // Install this library
+
+#include Adafruit_SSD1306.h>        // Install this library
+
+#include DHT.h>                           // Install this library
+
+// OLED display setup
+
+#define SCREEN_WIDTH 128
+
+#define SCREEN_HEIGHT 64
+
+#define OLED_RESET    -1
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+// DHT11 setup
+
+#define DHTPIN 4         // GPIO pin for DHT11
+
+#define DHTTYPE DHT11
+
+DHT dht(DHTPIN, DHTTYPE);
+
+// Pin Definitions
+
+#define SOIL_MOISTURE_PIN 34  // Analog pin
+
+#define RAIN_SENSOR_PIN    35  // Analog pin
+
+#define RELAY_PIN          26  // Relay connected to pump
+
+// Battery check (optional)
+
+#define BATTERY_PIN        33  // ADC1 channel for battery voltage
+
+void setup() {
+
+  Serial.begin(115200);
+
+// Initialize display
+
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+
+    Serial.println("SSD1306 not found");
+
+    for (;;);
+
+  }
+
+ display.clearDisplay();
+
+  display.setTextSize(1);
+
+  display.setTextColor(SSD1306_WHITE);
+
+  dht.begin();
+
+pinMode(RELAY_PIN, OUTPUT);
+
+  digitalWrite(RELAY_PIN, LOW); // Keep pump off initially
+
+ displayMessage("System Initializing...");
+
+}
+
+void loop() {
+
+  delay(2000);
+
+// Read DHT11
+
+  float temp = dht.readTemperature();
+
+  float hum = dht.readHumidity();
+
+ // Read soil moisture (0 dry - 4095 wet for ESP32 ADC)
+
+  int soilRaw = analogRead(SOIL_MOISTURE_PIN);
+
+  float soilPercent = map(soilRaw, 4095, 0, 0, 100); // Calibrated for ESP32
+
+ // Read rain sensor
+
+  int rainRaw = analogRead(RAIN_SENSOR_PIN);
+
+  bool isRaining = rainRaw < 2000; // Tune threshold as needed
+
+// Battery voltage read (optional)
+
+  float batteryVoltage = analogRead(BATTERY_PIN) * (3.3 / 4095.0) * 2; // if using voltage divider
+
+// Show data on OLED
+
+  display.clearDisplay();
+
+  display.setCursor(0,0);
+
+  display.printf("Temp: %.1f C\n", temp);
+
+  display.printf("Hum: %.1f %%\n", hum);
+
+  display.printf("Soil: %.0f %%\n", soilPercent);
+
+  display.printf("Rain: %s\n", isRaining ? "Yes" : "No");
+
+  display.printf("Pump: %s\n", (soilPercent < 30 && !isRaining) ? "ON" : "OFF");
+
+  display.printf("Battery: %.2f V", batteryVoltage);
+
+  display.display();
+
+ // Pump control logic
+
+  if (soilPercent < 30 && !isRaining) {
+
+    digitalWrite(26, LOW);  // Turn on pump
+
+  } else {
+
+    digitalWrite(26, HIGH);   // Turn off pump
+
+  }
+
+}
+
+void displayMessage(String msg) {
+
+  display.clearDisplay();
+
+  display.setCursor(0, 0);
+
+  display.println(msg);
+
+  display.display();
+
+}</span>
+</code></pre>
+            </div>
+        </section>
+
+<!-- Another code start from Here -->
+
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Smart Temperature Monitoring System</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-5')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-5"><code>
+<span>
+#include <Wire.h>
+
+#include Adafruit_GFX.h>           // Install this library
+
+#include Adafruit_SSD1306.h>      // Install this library
+
+#include DHT.h>                  // Install this library
+
+#define SCREEN_WIDTH 128
+
+#define SCREEN_HEIGHT 64
+
+#define OLED_RESET    -1
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+// DHT11 settings
+
+#define DHTPIN 2     // Pin connected to DATA of DHT11
+
+#define DHTTYPE DHT11
+
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+
+  Serial.begin(9600);
+
+  dht.begin();
+
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+
+    Serial.println(F("SSD1306 allocation failed"));
+
+    for(;;);
+
+  }
+
+  display.clearDisplay();
+
+  display.setTextSize(1);
+
+  display.setTextColor(SSD1306_WHITE);
+
+}
+
+void loop() {
+
+  // Read temperature and humidity
+
+  float humidity = dht.readHumidity();
+
+  float temperature = dht.readTemperature(); // Celsius
+
+  // Check if any reads failed
+
+  if (isnan(humidity) || isnan(temperature)) {
+
+    Serial.println(F("Failed to read from DHT sensor!"));
+
+    display.clearDisplay();
+
+    display.setCursor(0, 20);
+
+    display.println(F("Sensor Error"));
+
+    display.display();
+
+    delay(2000);
+
+    return;
+
+  }
+
+  // Print to Serial Monitor
+
+  Serial.print(F("Humidity: "));
+
+  Serial.print(humidity);
+
+  Serial.print(F("%  Temperature: "));
+
+  Serial.print(temperature);
+
+  Serial.println(F("°C"));
+
+  // Display on OLED
+
+  display.clearDisplay();
+
+  display.setCursor(0, 0);
+
+  display.println(F("Temp & Humidity"));
+
+  display.setCursor(0, 25);
+
+  display.print(F("Temp: "));
+
+  display.print(temperature);
+
+  display.println(F(" C"));
+
+  display.setCursor(0, 45);
+
+  display.print(F("Hum:  "));
+
+  display.print(humidity);
+
+  display.println(F(" %"));
+
+  display.display();
+
+  delay(2000); // Update every 2 seconds
+
+}
+</span>
+</code></pre>
+            </div>
+        </section>
+<!-- Another code start from Here -->
+
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Smart Weather Monitoring System</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-6')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-6"><code>
+<span>
+#include <WiFi.h>
+
+#include    HTTPClient.h>  //install the library
+
+#include   DHT.h>        //install the library
+
+// fill in the * indication
+
+// ---------- WiFi ----------
+
+const char* ssid = "********************";    // write your wifi ssid
+
+const char* password = "****************";   // write your wifi Password
+
+// ---------- ThingSpeak ----------
+
+String apiKey = "********************";     // write the apikey from thingspeak.com
+
+const char* server = "http://api.thingspeak.com/update";
+
+// ---------- DHT11 ----------
+
+#define DHTPIN 4
+
+#define DHTTYPE DHT11
+
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+
+  Serial.begin(115200);
+
+  dht.begin();
+
+  WiFi.begin(ssid, password);
+
+  Serial.print("Connecting");
+
+  while (WiFi.status() != WL_CONNECTED) {
+
+    delay(500);
+
+    Serial.print(".");
+
+  }
+
+  Serial.println("\nWiFi Connected");
+
+}
+
+void loop() {
+
+  float temp = dht.readTemperature();
+
+  float hum = dht.readHumidity();
+
+  if (isnan(temp) || isnan(hum)) {
+
+    Serial.println("DHT Error");
+
+    delay(2000);
+
+    return;
+
+  }
+
+  if (WiFi.status() == WL_CONNECTED) {
+
+    HTTPClient http;
+
+    String url = server + String("?api_key=") + apiKey +
+
+                 "&field1=" + String(temp) +
+
+                 "&field2=" + String(hum);
+
+    http.begin(url);
+
+    int httpCode = http.GET();
+
+    http.end();
+
+    Serial.println("Data Sent to ThingSpeak");
+
+  }
+
+  delay(15000);   // ThingSpeak needs minimum 15 sec delay
+
+}</span>
+</code></pre>
+            </div>
+        </section>
+
+
+
+<!-- Another code start from Here -->
+
+        <!-- <section class="code-card">
+            <div class="code-info">
+                <h2>Smart Gas Detection System</h2>
+                <p>Firmware for MQ-2 Gas sensor with OLED display and Buzzer alert.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-7')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-7"><code><span class="keyword">int</span> gas_sensor = A0;
+<span class="keyword">int</span> buzzer = 13;
+
+<span class="keyword">void</span> <span class="function">setup</span>() {
+  Serial.<span class="function">begin</span>(9600);
+  <span class="keyword">pinMode</span>(buzzer, OUTPUT);
+}
+
+<span class="keyword">void</span> <span class="function">loop</span>() {
+  <span class="keyword">int</span> val = <span class="function">analogRead</span>(gas_sensor);
+  <span class="keyword">if</span> (val > 400) {
+    <span class="function">digitalWrite</span>(buzzer, HIGH);
+    Serial.<span class="function">println</span>(<span class="string">"ALERT: Gas Leak!"</span>);
+  } <span class="keyword">else</span> {
+    <span class="function">digitalWrite</span>(buzzer, LOW);
+  }
+}</code></pre>
+            </div>
+        </section> -->
+
+        <!-- Code end here -->
+
+    </main>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chip Craft Footer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* CSS STYLES */
+        :root {
+            --footer-bg: #111111;
+            --footer-text: #b0b0b0;
+            --footer-heading: #ffffff;
+            --accent-blue: #007bff;
+            --footer-bottom-bg: #000000;
+            --transition: 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Main Footer Container */
+        .site-footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 80px 0 0;
+            border-top: 5px solid var(--accent-blue);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        /* Column Headers */
+        .footer-col h3 {
+            color: var(--footer-heading);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 120px;
+            bottom: -10px;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-blue);
+        }
+
+        /* Brand/About Section */
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            display: block;
+            text-decoration: none;
+        }
+        .footer-logo span { color: var(--accent-blue); }
+        .footer-col p { line-height: 1.8; font-size: 0.95rem; }
+
+        .social-links {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #222;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        /* Navigation Links */
+        .footer-col ul {
+            list-style: none;
+            padding: 10;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-blue);
+            padding-left: 8px;
+        }
+
+        /* Contact Details */
+        .contact-info div {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info i {
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            margin-top: 4px;
+            margin-left: 40px;
+        }
+
+        /* Footer Bottom Bar */
+        .footer-bottom {
+            background-color: var(--footer-bottom-bg);
+            padding: 25px 0;
+            margin-top: 60px;
+            border-top: 1px solid #222;
+        }
+
+        .footer-bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom p { font-size: 0.85rem; margin: 0; }
+        
+        .back-to-top {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-to-top:hover { color: var(--accent-blue); }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .site-footer { text-align: center; }
+            .footer-col h3::after { left: 50%; transform: translateX(-50%); }
+            .social-links, .contact-info div { justify-content: center; }
+            .footer-bottom-content { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+   
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <div class="footer-col">
+                <a href="#" class="footer-logo">CHIP <span>CRAFT</span></a>
+                <p>Building Brighter Futures Through Smarter Learning. Your ultimate destination for IOT And Arduino projects.</p>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/channel/UCNMYiU8uqKBqTtRFdk5_Nag" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="iot.html">IOT Projects</a></li>
+                    <li><a href="arduino.html">Arduino Projects</a></li>
+                    <li><a href="circuit.html">Circuit Diagrams</a></li>
+                    <li><a href="about.html">About us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <div class="contact-info">
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <p>surajraut2040@gmail.com</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+91 7427989676</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Ramnagar, Contai, West Bengal, India</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2026 Chip Craft | All Rights Reserved.</p>
+                <a href="#top" class="back-to-top">Back to top <i class="fas fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+    <script>
+        /**
+         * Function to copy code to clipboard
+         * @param {HTMLElement} btn - The button clicked
+         * @param {string} codeId - The ID of the code element
+         */
+        function copyCode(btn, codeId) {
+            const codeText = document.getElementById(codeId).innerText;
+            
+            navigator.clipboard.writeText(codeText).then(() => {
+                // Change button appearance
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                btn.classList.add('copied');
+
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Error copying text: ', err);
+            });
+        }
+    </script>
+
+</body>
+</html>

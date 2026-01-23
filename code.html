@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOT Code | Chip Craft</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* CSS STYLES */
+        :root {
+            --primary-blue: #007bff;
+            --dark-bg: #1e1e1e; /* VS Code style dark */
+            --light-gray: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: #333;
+        }
+
+        /* Navbar */
+        header {
+            background: #fff;
+            padding: 15px 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .code-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-blue);
+            padding-left: 15px;
+        }
+
+        .code-header h2 {
+            font-size: 1.5rem;
+            color: #222;
+        }
+
+        /* Code Block Styling */
+        .code-box {
+            background: var(--dark-bg);
+            color: #dcdcaa; /* Light yellow code text */
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .code-box pre {
+            font-family: 'Fira Code', monospace;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-blue);
+        }
+
+        .keyword { color: #569cd6; } /* Blue keywords */
+        .string { color: #ce9178; }  /* Orange strings */
+        .comment { color: #6a9955; font-style: italic; } /* Green comments */
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #fff;
+            color: #888;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">CHIP CRAFT</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="iot.html">IOT Projects</a></li>
+                <li><a href="code.html" style="color:var(--primary-blue)">IOT Code</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Source Codes</h1>
+        <p style="margin-bottom: 40px; color: #666;">Copy and paste these codes into your Arduino IDE to get started.</p>
+
+        <section class="code-section" id="voice-control">
+            <div class="code-header">
+                <h2>Light Control By Voice Command</h2>
+                <span class="badge" style="background:#e7f3ff; color:#007bff; padding:5px 10px; border-radius:15px; font-size:0.8rem;">ESP32</span>
+            </div>
+            
+            <div class="code-box">
+                <button class="copy-btn" onclick="copyCode('code1')">Copy</button>
+                <pre id="code1">
+<span class="comment">// Include necessary libraries</span>
+<span class="keyword">#include</span> &lt;WiFi.h&gt;
+<span class="keyword">#include</span> &lt;SinricPro.h&gt;
+
+<span class="keyword">#define</span> LED_PIN 2
+
+<span class="keyword">void</span> <span class="keyword">setup</span>() {
+  Serial.<span class="keyword">begin</span>(115200);
+  <span class="keyword">pinMode</span>(LED_PIN, OUTPUT);
+  <span class="comment">// WiFi Connection logic here</span>
+}
+
+<span class="keyword">void</span> <span class="keyword">loop</span>() {
+  SinricPro.<span class="keyword">handle</span>();
+}</pre>
+            </div>
+        </section>
+
+        <section class="code-section" id="gas-sensor">
+            <div class="code-header">
+                <h2>Smart Gas & Fire Detection</h2>
+                <span class="badge" style="background:#fff4e5; color:#ff8800; padding:5px 10px; border-radius:15px; font-size:0.8rem;">Sensors</span>
+            </div>
+            
+            <div class="code-box">
+                <button class="copy-btn" onclick="copyCode('code2')">Copy</button>
+                <pre id="code2">
+<span class="keyword">int</span> sensorPin = A0; 
+<span class="keyword">int</span> buzzer = 13;
+
+<span class="keyword">void</span> <span class="keyword">setup</span>() {
+  <span class="keyword">pinMode</span>(sensorPin, INPUT);
+  <span class="keyword">pinMode</span>(buzzer, OUTPUT);
+  Serial.<span class="keyword">begin</span>(9600);
+}
+
+<span class="keyword">void</span> <span class="keyword">loop</span>() {
+  <span class="keyword">int</span> data = <span class="keyword">analogRead</span>(sensorPin);
+  <span class="keyword">if</span> (data > 500) {
+    <span class="keyword">digitalWrite</span>(buzzer, HIGH);
+    Serial.<span class="keyword">println</span>(<span class="string">"Danger! Gas Detected"</span>);
+  }
+}</pre>
+            </div>
+        </section>
+    </div>
+
+    <footer class="site-footer">
+    <div class="footer-container">
+        <style>
+            /* Footer Styles */
+:root {
+    --footer-bg: #111;
+    --footer-text: #b0b0b0;
+    --accent-color: #007bff; /* Chip Craft blue */
+    --white: #ffffff;
+    --footer-bottom: #000;
+}
+
+.site-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding-top: 60px;
+    font-family: 'Poppins', sans-serif;
+    border-top: 4px solid var(--accent-color);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 30px;
+}
+
+/* Brand Section */
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+.footer-logo span { color: var(--accent-color); }
+
+.social-media a {
+    color: var(--footer-text);
+    font-size: 1.2rem;
+    margin-right: 15px;
+    transition: 0.3s;
+}
+.social-media a:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* Links Section */
+.footer-section h3 {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    position: relative;
+}
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 30px;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-section ul li {
+    margin-bottom: 12px;
+}
+.footer-section ul li a {
+    color: var(--footer-text);
+    text-decoration: none;
+    transition: 0.3s;
+}
+.footer-section ul li a:hover {
+    color: var(--accent-color);
+    padding-left: 5px;
+}
+
+/* Contact Section */
+.contact p {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+.contact i {
+    color: var(--accent-color);
+    margin-right: 10px;
+    width: 20px;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    background-color: var(--footer-bottom);
+    padding: 20px 0;
+    margin-top: 30px;
+    font-size: 0.85rem;
+}
+.footer-bottom .footer-container {
+    align-items: center;
+}
+
+.back-to-top {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+}
+.back-to-top i {
+    margin-left: 5px;
+    transition: 0.3s;
+}
+.back-to-top:hover i {
+    transform: translateY(-5px);
+}
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-section h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .social-media {
+        justify-content: center;
+        display: flex;
+    }
+    .footer-bottom .footer-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+        </style>
+        
+        <div class="footer-section about">
+            <h2 class="footer-logo">CHIP <span>CRAFT</span></h2>
+            <p>Empowering hobbyists and students with high-quality IOT, Arduino, and electronics projects since 2024.</p>
+            <div class="social-media">
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="iot-projects.html">IOT Projects</a></li>
+                <li><a href="arduino-projects.html">Arduino Projects</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section links">
+            <h3>Support</h3>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Contact Support</a></li>
+                <li><a href="#">FAQs</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section contact">
+            <h3>Get In Touch</h3>
+            <p><i class="fas fa-envelope"></i> surajraut2040@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +91 7427989676</p>
+            <p><i class="fas fa-map-marker-alt"></i> West Bengal, India</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-container">
+            <p>&copy; 2026 Chip Craft | All Rights Reserved.</p>
+            <a href="#top" class="back-to-top">Back to top <i class="fas fa-arrow-up"></i></a>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        function copyCode(id) {
+            const code = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                alert("Code copied to clipboard!");
+            });
+        }
+    </script>
+</body>
+</html>

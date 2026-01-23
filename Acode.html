@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOT Code Repository</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-blue: #007bff;
+            --bg-light: #f8f9fa;
+            --code-bg: #1e1e1e; /* VS Code Style */
+            --text-dark: #333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+       /* Navbar */
+        header {
+            position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.893); /* Semi-transparent */
+    backdrop-filter: blur(50px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px; /* Pill shape */
+    padding: 10px 30px;
+    z-index: 1000;
+    box-shadow: 0 2px 22px rgb(72, 255, 0);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            font-size: 20px;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+        }
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    padding: 110px 50px 50px;
+    background: #bdd2e9;
+    border-bottom: 1px solid #efc3c3;
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+    color: #000000;
+}
+
+.page-header p {
+    font-size: medium;
+    color: #000000;
+    margin-top: 10px;
+}
+
+        /* Page Content */
+        .container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            color: #222;
+        }
+
+        /* Code Card */
+        .code-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .code-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #222;
+            border-left: 5px solid var(--primary-blue);
+            padding-left: 15px;
+        }
+
+        .code-info p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        /* Code Block Area */
+        .code-wrapper {
+            position: relative;
+            background: var(--code-bg);
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        pre {
+            margin: 0;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #dcdcaa; /* Syntax highlight color */
+        }
+
+        /* Syntax Highlight Colors */
+        .keyword { color: #569cd6; }
+        .comment { color: #6a9955; font-style: italic; }
+        .string { color: #ce9178; }
+        .function { color: #dcdcaa; }
+
+        /* Copy Button */
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 6px 15px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+
+        .copy-btn.copied {
+            background: #28a745;
+            border-color: #28a745;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .page-title h1 { font-size: 1.8rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+  <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">CHIP CRAFT</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Acode.html" style="color:blue">Arduino Code</a></li>
+                <li><a href="arduino.html">Arduino Projects</a></li> 
+                <li><a href="iot.html">IoT Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>Arduino Projects</h1>
+        <p>Explore our latest Arduino innovations and Source Code.</p>
+    </section>
+<!-- Code start here -->
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Object detection using Arduino and IR sensor</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-1')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-1"><code>
+<span>
+// Pin definitions
+const int irSensorPin = 2;     // IR sensor output connected to digital pin 2
+
+const int ledPin = 13;         // Onboard LED or external LED on pin 13
+
+void setup() {
+
+  pinMode(irSensorPin, INPUT);    // Set IR sensor pin as input
+
+  pinMode(ledPin, OUTPUT);        // Set LED pin as output
+
+  Serial.begin(9600);             // Start serial communication
+
+}
+
+void loop() {
+
+  int sensorValue = digitalRead(irSensorPin);  // Read IR sensor output
+
+  if (sensorValue == LOW) {
+
+    // Object detected
+
+    Serial.println("Object Detected!");
+
+    digitalWrite(ledPin, HIGH);  // Turn on LED
+
+  } else {
+
+    // No object
+
+    Serial.println("No Object.");
+
+    digitalWrite(ledPin, LOW);   // Turn off LED
+
+  }
+
+  delay(200);  // Small delay for stability
+
+}</span>
+</code></pre>
+            </div>
+        </section>
+
+<!-- Another code start from Here -->
+
+       <section class="code-card">
+            <div class="code-info">
+                <h2>7 segment display Control using Arduino UNO</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-2')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-2"><code>
+<span>
+    // Pin Definitions for Common Anode 7-Segment Display
+const int segA = 2;
+
+const int segB = 3;
+
+const int segC = 4;
+
+const int segD = 5;
+
+const int segE = 6;
+
+const int segF = 7;
+
+const int segG = 8;
+
+// Array to represent digits 0-9 for 7-segment display
+
+// The segments are in the order: {A, B, C, D, E, F, G}
+
+int digits[10][7] = {
+
+  {LOW, LOW, LOW, LOW, LOW, LOW, HIGH},  // 0
+
+  {HIGH, LOW, LOW, HIGH, HIGH, HIGH, HIGH}, // 1
+
+  {LOW, LOW, HIGH, LOW, LOW, HIGH, LOW},  // 2
+
+  {LOW, LOW, LOW, LOW, HIGH, HIGH, LOW},  // 3
+
+  {HIGH, LOW, LOW, HIGH, HIGH, LOW, LOW},  // 4
+
+  {LOW, HIGH, LOW, LOW, HIGH, LOW, LOW},  // 5
+
+  {LOW, HIGH, LOW, LOW, LOW, LOW, LOW},   // 6
+
+  {LOW, LOW, LOW, HIGH, HIGH, HIGH, HIGH},// 7
+
+  {LOW, LOW, LOW, LOW, LOW, LOW, LOW},    // 8
+
+  {LOW, LOW, LOW, LOW, HIGH, LOW, LOW}    // 9
+
+};
+
+void setup() {
+
+  // Set the 7-segment display pins as output
+
+  pinMode(segA, OUTPUT);
+
+  pinMode(segB, OUTPUT);
+
+  pinMode(segC, OUTPUT);
+
+  pinMode(segD, OUTPUT);
+
+  pinMode(segE, OUTPUT);
+
+  pinMode(segF, OUTPUT);
+
+  pinMode(segG, OUTPUT);
+
+}
+
+void loop() {
+
+  for (int i = 0; i < 10; i++) {
+
+    displayDigit(i);  // Display the digit on the 7-segment display
+
+    delay(1000);      // Wait for 1 second
+
+  }
+
+}
+
+// Function to display a digit on the 7-segment display
+
+void displayDigit(int num) {
+
+  // Loop through each segment and set its state based on the digit
+
+  digitalWrite(segA, digits[num][0]);
+
+  digitalWrite(segB, digits[num][1]);
+
+  digitalWrite(segC, digits[num][2]);
+
+  digitalWrite(segD, digits[num][3]);
+
+  digitalWrite(segE, digits[num][4]);
+
+  digitalWrite(segF, digits[num][5]);
+
+  digitalWrite(segG, digits[num][6]);
+
+}</span>
+</code></pre>
+            </div>
+        </section>
+
+        <!-- Another code start from Here -->
+        
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Arduino Rain Sensor Project</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-3')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-3"><code>
+                 <span>
+
+// Pin definitions
+
+#define RAIN_SENSOR_PIN 2 // Digital output from rain sensor
+
+#define LED_PIN 13        // LED pin
+
+void setup() {
+
+  pinMode(RAIN_SENSOR_PIN, INPUT); // Rain sensor input
+
+  pinMode(LED_PIN, OUTPUT);        // LED output
+
+  Serial.begin(9600);              // Optional: Serial monitor
+
+}
+
+void loop() {
+
+  int rainState = digitalRead(RAIN_SENSOR_PIN);
+
+if (rainState == LOW) {  // LOW = Rain detected (depends on sensor)
+
+    digitalWrite(LED_PIN, HIGH); // Turn LED on
+
+    Serial.println("Rain detected!");
+
+  } else {
+
+    digitalWrite(LED_PIN, LOW);  // Turn LED off
+
+    Serial.println("No rain");
+
+  }
+
+  delay(500); // Check every 0.5 seconds
+
+}
+
+</span>
+</code></pre>
+            </div>
+        </section>
+
+<!-- Another code start from Here -->
+
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Arduino Soil Moisture Sensors Project</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-4')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-4"><code>
+<span>
+
+// Soil Moisture Indicator using LED
+
+// Reads analog input from soil sensor and turns on LED when soil is dry
+
+int sensorPin = A0;     // Analog input pin for soil sensor
+
+int ledPin = 13;        // Digital output pin for LED
+
+int sensorValue = 0;    // Variable to store sensor reading
+
+int threshold = 500;    // Threshold value (adjust based on your sensor & soil type)
+
+void setup() {
+
+  pinMode(ledPin, OUTPUT);   // Set LED pin as output
+
+  Serial.begin(9600);        // Start serial monitor
+
+}
+
+void loop() {
+
+  sensorValue = analogRead(sensorPin); // Read analog value from sensor
+
+  Serial.print("Soil Moisture: ");
+
+  Serial.println(sensorValue);         // Print sensor value for calibration
+
+  // When soil is dry (sensorValue > threshold)
+
+  if (sensorValue > threshold) {
+
+    digitalWrite(ledPin, HIGH);  // Turn LED ON
+
+  } else {
+
+    digitalWrite(ledPin, LOW);   // Turn LED OFF
+
+  }
+
+  delay(1000);  // Wait 1 second before next reading
+
+}</span>
+</code></pre>
+            </div>
+        </section>
+
+<!-- Another code start from Here -->
+
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Arduino Flame sensor  Project</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-5')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-5"><code>
+<span>
+// Flame Sensor with LED and Buzzer Alert
+
+// Pin Definitions
+
+int flameSensor = 2;   // Digital pin connected to flame sensor output
+
+int buzzer = 8;        // Buzzer pin
+
+int led = 13;          // LED pin
+
+int flameState = HIGH; // HIGH means no flame detected initially
+
+void setup() {
+
+  pinMode(flameSensor, INPUT);  // Flame sensor input
+
+  pinMode(buzzer, OUTPUT);      // Buzzer output
+
+  pinMode(led, OUTPUT);         // LED output
+
+  Serial.begin(9600);           // Start serial communication
+
+  Serial.println("Flame Sensor Test Started...");
+
+}
+
+void loop() {
+
+  flameState = digitalRead(flameSensor); // Read flame sensor output
+
+  if (flameState == LOW) {  // Flame detected (active LOW)
+
+    Serial.println("🔥 Flame detected!");
+
+    digitalWrite(buzzer, HIGH); // Turn on buzzer
+
+    digitalWrite(led, HIGH);    // Turn on LED
+
+    delay(100);                 // Small delay
+
+  } else {
+
+    Serial.println("✅ No flame detected");
+
+    digitalWrite(buzzer, LOW);  // Turn off buzzer
+
+    digitalWrite(led, LOW);     // Turn off LED
+
+    delay(500);
+
+  }
+
+}
+</span>
+</code></pre>
+            </div>
+        </section>
+<!-- Another code start from Here -->
+
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Arduino DHT 11 Sensor Project</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-6')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-6"><code>
+<span>
+#include "DHT.h"
+
+// Define DHT pin and type
+
+#define DHTPIN 2       // DHT11 data pin connected to Arduino digital pin 2
+
+#define DHTTYPE DHT11  // DHT 11 sensor
+
+// Initialize DHT sensor
+
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+
+  Serial.begin(9600);
+
+  Serial.println("DHT11 Temperature and Humidity Sensor");
+
+  dht.begin();
+
+}
+
+void loop() {
+
+  // Wait a few seconds between measurements
+
+  delay(2000);
+
+// Reading temperature and humidity
+
+  float humidity = dht.readHumidity();
+
+  float temperature = dht.readTemperature(); // Default in °C
+
+  // float temperatureF = dht.readTemperature(true); // Use for Fahrenheit
+
+ // Check if readings are valid
+
+  if (isnan(humidity) || isnan(temperature)) {
+
+    Serial.println("Failed to read from DHT sensor!");
+
+    return;
+
+  }
+
+ // Display readings on Serial Monitor
+
+  Serial.print("Humidity: ");
+
+  Serial.print(humidity);
+
+  Serial.print(" %\t");
+
+  Serial.print("Temperature: ");
+
+  Serial.print(temperature);
+
+  Serial.println(" °C");
+
+}</span>
+</code></pre>
+            </div>
+        </section>
+
+
+
+<!-- Another code start from Here -->
+
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Arduino OLED Display Project</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-7')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-7"><code>
+<span>
+#include Wire.h>                //install the library
+
+#include Adafruit_GFX.h>       //install the library
+
+#include Adafruit_SSD1306.h>  //install the library
+
+// OLED display width and height, in pixels
+
+#define SCREEN_WIDTH 128
+
+#define SCREEN_HEIGHT 64
+
+// Create display object (for I2C, default address 0x3C)
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+
+void setup() {
+
+  // Initialize the display
+
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // 0x3C is the default I2C address
+
+    Serial.begin(9600);
+
+    Serial.println(F("SSD1306 allocation failed"));
+
+    for (;;); // Don't proceed, loop forever
+
+  }
+
+  // Clear the buffer
+
+  display.clearDisplay();
+
+  // Set text color and size
+
+  display.setTextSize(2);      // Text size (1 = small, 2 = medium, etc.)
+
+  display.setTextColor(SSD1306_WHITE);
+
+  display.setCursor(10, 25);   // Position on screen (x, y)
+
+  // Print text
+
+  display.println("Hello,");
+
+  display.println("World!");
+
+  // Display the text
+
+  display.display();
+
+}
+
+void loop() {
+
+  // Nothing to do here
+
+}
+    </span>
+</code></pre>
+            </div>
+        </section>
+
+
+<!-- Another code start from Here -->
+
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Arduino Gas Sensor project(MQ2)</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-8')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-8"><code>
+<span>
+// Pin definitions
+
+int mq2Pin = A0;        // MQ2 sensor analog pin
+
+int ledPin = 13;          // LED pin (built-in LED on most Arduino boards)
+
+int threshold = 500;      // Adjust this value based on your environment
+
+void setup() {
+
+  Serial.begin(9600);
+
+  pinMode(ledPin, OUTPUT);
+
+}
+
+void loop() {
+
+  int sensorValue = analogRead(mq2Pin);
+
+  Serial.print("MQ2 Value: ");
+
+  Serial.println(sensorValue);
+
+   if (sensorValue > threshold) {
+
+    digitalWrite(ledPin, HIGH);   // Turn LED ON
+
+  } else {
+
+    digitalWrite(ledPin, LOW);    // Turn LED OFF
+
+  }
+
+delay(1000);
+
+}
+    </span>
+</code></pre>
+            </div>
+        </section>
+
+<!-- Another code start from Here -->
+
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Arduino Object Counting Project (1 channel)</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-9')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-9"><code>
+<span>
+// IR sensor pin
+
+int irPin = 2;
+
+// 7-segment pins: a, b, c, d, e, f, g
+
+int segPins[7] = {3, 4, 5, 6, 7, 8, 9};
+
+// Number patterns for COMMON ANODE
+
+// 0 = ON, 1 = OFF
+
+byte numbers[10][7] = {
+
+  {0,0,0,0,0,0,1}, // 0
+
+  {1,0,0,1,1,1,1}, // 1
+
+  {0,0,1,0,0,1,0}, // 2
+
+  {0,0,0,0,1,1,0}, // 3
+
+  {1,0,0,1,1,0,0}, // 4
+
+  {0,1,0,0,1,0,0}, // 5
+
+  {0,1,0,0,0,0,0}, // 6
+
+  {0,0,0,1,1,1,1}, // 7
+
+  {0,0,0,0,0,0,0}, // 8
+
+  {0,0,0,0,1,0,0}  // 9
+
+};
+
+int count = 0;
+
+bool lastState = HIGH;
+
+void setup() {
+
+  pinMode(irPin, INPUT);
+
+  for (int i = 0; i < 7; i++) {
+
+    pinMode(segPins[i], OUTPUT);
+
+  }
+
+  displayNumber(count);
+
+}
+
+void loop() {
+
+  bool currentState = digitalRead(irPin);
+
+  // Detect object (HIGH → LOW)
+
+  if (lastState == HIGH && currentState == LOW) {
+
+    count++;
+
+    if (count > 9) count = 0;
+
+    displayNumber(count);
+
+    delay(300);   // debounce
+
+  }
+
+lastState = currentState;
+
+}
+
+void displayNumber(int num) {
+
+  for (int i = 0; i < 7; i++) {
+
+    digitalWrite(segPins[i], numbers[num][i]);
+
+  }
+
+}
+    </span>
+</code></pre>
+            </div>
+        </section>
+        </section> 
+
+        <!-- Another code start from Here -->
+
+        <section class="code-card">
+            <div class="code-info">
+                <h2>Arduino Object Counting Project (2 channel)</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-10')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-10"><code>
+<span>
+// IR sensor pins
+
+int irInc = 2;    // Increment sensor
+
+int irDec = 10;   // Decrement sensor
+
+// 7-segment pins: a b c d e f g
+
+int segPins[7] = {3, 4, 5, 6, 7, 8, 9};
+
+// Common Anode number patterns
+
+// 0 = ON, 1 = OFF
+
+byte numbers[10][7] = {
+
+  {0,0,0,0,0,0,1}, // 0
+
+  {1,0,0,1,1,1,1}, // 1
+
+  {0,0,1,0,0,1,0}, // 2
+
+  {0,0,0,0,1,1,0}, // 3
+
+  {1,0,0,1,1,0,0}, // 4
+
+  {0,1,0,0,1,0,0}, // 5
+
+  {0,1,0,0,0,0,0}, // 6
+
+  {0,0,0,1,1,1,1}, // 7
+
+  {0,0,0,0,0,0,0}, // 8
+
+  {0,0,0,0,1,0,0}  // 9
+
+};
+
+int count = 0;
+
+bool lastIncState = HIGH;
+
+bool lastDecState = HIGH;
+
+void setup() {
+
+  pinMode(irInc, INPUT);
+
+  pinMode(irDec, INPUT);
+
+for (int i = 0; i < 7; i++) {
+
+    pinMode(segPins[i], OUTPUT);
+
+  }
+
+  displayNumber(count);
+
+}
+
+void loop() {
+
+  bool incState = digitalRead(irInc);
+
+  bool decState = digitalRead(irDec);
+
+// Increment logic
+
+  if (lastIncState == HIGH && incState == LOW) {
+
+    count++;
+
+    if (count > 9) count = 9;
+
+    displayNumber(count);
+
+    delay(300);
+
+  }
+
+// Decrement logic
+
+  if (lastDecState == HIGH && decState == LOW) {
+
+    count--;
+
+    if (count < 0) count = 0;
+
+    displayNumber(count);
+
+    delay(300);
+
+  }
+
+  lastIncState = incState;
+
+  lastDecState = decState;
+
+}
+
+void displayNumber(int num) {
+
+  for (int i = 0; i < 7; i++) {
+
+    digitalWrite(segPins[i], numbers[num][i]);
+
+  }
+
+}
+    </span>
+</code></pre>
+            </div>
+        </section>
+        </section> 
+
+<!-- Another code start from Here -->
+        <!-- <section class="code-card">
+            <div class="code-info">
+                <h2>Smart Weather Monitoring System</h2>
+                <p>ESP32 source code for controlling home lighting via SinricPro and Alexa.</p>
+            </div>
+            <div class="code-wrapper">
+                <button class="copy-btn" onclick="copyCode(this, 'code-6')">
+                    <i class="far fa-copy"></i> Copy Code
+                </button>
+                <pre id="code-6"><code>
+<span>
+
+    </span>
+</code></pre>
+            </div>
+        </section>
+        </section>  -->
+
+        <!-- Code end here -->
+
+    </main>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chip Craft Footer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* CSS STYLES */
+        :root {
+            --footer-bg: #111111;
+            --footer-text: #b0b0b0;
+            --footer-heading: #ffffff;
+            --accent-blue: #007bff;
+            --footer-bottom-bg: #000000;
+            --transition: 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Main Footer Container */
+        .site-footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 80px 0 0;
+            border-top: 5px solid var(--accent-blue);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        /* Column Headers */
+        .footer-col h3 {
+            color: var(--footer-heading);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 120px;
+            bottom: -10px;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-blue);
+        }
+
+        /* Brand/About Section */
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            display: block;
+            text-decoration: none;
+        }
+        .footer-logo span { color: var(--accent-blue); }
+        .footer-col p { line-height: 1.8; font-size: 0.95rem; }
+
+        .social-links {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #222;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        /* Navigation Links */
+        .footer-col ul {
+            list-style: none;
+            padding: 10;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-blue);
+            padding-left: 8px;
+        }
+
+        /* Contact Details */
+        .contact-info div {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info i {
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            margin-top: 4px;
+            margin-left: 40px;
+        }
+
+        /* Footer Bottom Bar */
+        .footer-bottom {
+            background-color: var(--footer-bottom-bg);
+            padding: 25px 0;
+            margin-top: 60px;
+            border-top: 1px solid #222;
+        }
+
+        .footer-bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom p { font-size: 0.85rem; margin: 0; }
+        
+        .back-to-top {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-to-top:hover { color: var(--accent-blue); }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .site-footer { text-align: center; }
+            .footer-col h3::after { left: 50%; transform: translateX(-50%); }
+            .social-links, .contact-info div { justify-content: center; }
+            .footer-bottom-content { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+   
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <div class="footer-col">
+                <a href="#" class="footer-logo">CHIP <span>CRAFT</span></a>
+                <p>Building Brighter Futures Through Smarter Learning. Your ultimate destination for IOT And Arduino projects.</p>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/channel/UCNMYiU8uqKBqTtRFdk5_Nag" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="iot.html">IOT Projects</a></li>
+                    <li><a href="arduino.html">Arduino Projects</a></li>
+                    <li><a href="circuit.html">Circuit Diagrams</a></li>
+                    <li><a href="about.html">About us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <div class="contact-info">
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <p>surajraut2040@gmail.com</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+91 7427989676</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Ramnagar, Contai, West Bengal, India</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2026 Chip Craft | All Rights Reserved.</p>
+                <a href="#top" class="back-to-top">Back to top <i class="fas fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+    <script>
+        /**
+         * Function to copy code to clipboard
+         * @param {HTMLElement} btn - The button clicked
+         * @param {string} codeId - The ID of the code element
+         */
+        function copyCode(btn, codeId) {
+            const codeText = document.getElementById(codeId).innerText;
+            
+            navigator.clipboard.writeText(codeText).then(() => {
+                // Change button appearance
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                btn.classList.add('copied');
+
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Error copying text: ', err);
+            });
+        }
+    </script>
+
+</body>
+</html>
