@@ -248,12 +248,10 @@
 .footer-section h3::after {
     content: '';
     position: absolute;
-    left: 120px;
-    justify-items: auto;
-    padding-left: 50px;
-    bottom: 8px;
+    left: 0;
+    bottom: -8px;
     width: 30px;
-    height: 72px;
+    height: 2px;
     background-color: var(--accent-color);
 }
 
@@ -335,4 +333,5 @@
     .arduino-grid-container {
         grid-template-columns: 1fr;
     }
+
 }
