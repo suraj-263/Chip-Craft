@@ -244,12 +244,14 @@ header {
 .card-info p { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
 
 .click-btn {
-    display: inline-block;
+   display: inline-block;
+    border: 1px solid rgb(from color r g b);
     padding: 8px 20px;
-    background: #333;
-    color: white;
+    background: #3c87f9;
+    color: rgb(0, 0, 0);
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 50px;
+    transform: matrix(3px);;
 }
 
 /* Footer Styles */
@@ -397,4 +399,5 @@ header {
 @media (max-width: 768px) {
     .nav-links { display: none; } /* You would add a hamburger menu here */
     .hero h1 { font-size: 2.5rem; }
+
 }
