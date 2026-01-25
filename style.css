@@ -244,14 +244,13 @@ header {
 .card-info p { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
 
 .click-btn {
-   display: inline-block;
-    border: 1px solid rgb(from color r g b);
+    display: inline-block;
+    border: 1px solid #303030;
     padding: 8px 20px;
-    background: #3c87f9;
-    color: rgb(0, 0, 0);
+    background: #2d2d2d;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     border-radius: 50px;
-    transform: matrix(3px);;
 }
 .click-btn:hover { background: #0064fa; }
 
@@ -402,4 +401,5 @@ header {
     .hero h1 { font-size: 2.5rem; }
 
 }
+
 
