@@ -11,20 +11,20 @@
 
     <style>
         :root {
-            --primary-blue: #007bff;
+            --primary-blue: #085aff;
             --dark: #000000;
-            --light-bg: #b9dafa;
+            --light-bg: #72d7ff;
             --text-muted: #6c757d;
             --footer-bg: #111111;
-            --footer-text: #b0b0b0;
+            --footer-text: #fffcfc;
             --footer-heading: #ffffff;
-            --accent-blue: #a6d0fd;
+            --accent-blue: #115ff1;
             --footer-bottom-bg: #000000;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-        body { background-color: #c3fdb1; color: var(--dark); line-height: 1.6; }
+        body { background-color: var(--light-bg); color: var(--light); line-height: 1.6; }
 
         /* Navbar Styling */
         header {
@@ -60,7 +60,10 @@
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
         .form-group input, .form-group textarea { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
-        
+        .info-item { display: flex; align-items: center; padding: auto }
+        .info-item i { font-size: 1.2rem; color: black; margin-right: 15px; }
+
+        /* button */
         .btn-submit {
             background: var(--primary-blue);
             color: #ffffff;
@@ -83,7 +86,7 @@
         .site-footer { background-color: var(--footer-bg); color: var(--footer-text); padding: 60px 0 0; border-top: 5px solid var(--accent-blue); margin-top: 50px; }
         .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 25px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         .footer-col h3 { color: var(--footer-heading); margin-bottom: 25px; position: relative; }
-        .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 50px; height: 3px; background: var(--accent-blue); }
+        .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 50px; height: 3px; background-color: var(--accent-blue); }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 10px; }
         .footer-col ul li a { color: var(--footer-text); text-decoration: none; transition: 0.3s; }
