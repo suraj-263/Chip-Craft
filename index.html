@@ -12,29 +12,34 @@
 
     <header>
         <nav class="navbar">
-            <div class="logo">CHIP CRAFT</div>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">IOT Project <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="iot.html">IOT projects</a></li>
-                        <li><a href="Icode.html">IOT Code</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Arduino Project <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="arduino.html">Arduino Projects</a></li>
-                        <li><a href="Acode.html">Arduino Code</a></li>
-                    </ul>
-                </li>
-                <li><a href="circuit.html">Circuit Diagram</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+    <div class="logo">CHIP CRAFT</div>
+    
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <ul class="nav-links" id="nav-list">
+        <li><a href="#">Home</a></li>
+        <li class="dropdown">
+            <a href="#">IOT Project <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="iot.html">IOT projects</a></li>
+                <li><a href="Icode.html">IOT Code</a></li>
             </ul>
-            <a href="https://www.youtube.com/channel/UCNMYiU8uqKBqTtRFdk5_Nag" target="YouTube"><i class="fab fa-youtube"></i></a>
-        </nav>
+        </li>
+        <li class="dropdown">
+            <a href="#">Arduino Project <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="arduino.html">Arduino Projects</a></li>
+                <li><a href="Acode.html">Arduino Code</a></li>
+            </ul>
+        </li>
+        <li><a href="circuit.html">Circuit Diagram</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <a href="https://www.youtube.com/channel/UCNMYiU8uqKBqTtRFdk5_Nag" target="YouTube" class="yt-icon"><i class="fab fa-youtube"></i></a>
+</nav>
     </header>
 
     <section class="hero">
@@ -279,7 +284,6 @@
                     <li><a href="iot.html">IOT Projects</a></li>
                     <li><a href="arduino.html">Arduino Projects</a></li>
                     <li><a href="circuit.html">Circuit Diagrams</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </div>
 
@@ -313,12 +317,22 @@
 
 </body>
 </html>
+<script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+
+    menuToggle.addEventListener('click', () => {
+        navList.classList.toggle('active');
+        
+        // Optional: Change icon from bars to 'X' when open
+        const icon = menuToggle.querySelector('i');
+        if (navList.classList.contains('active')) {
+            icon.classList.replace('fa-bars', 'fa-times');
+        } else {
+            icon.classList.replace('fa-times', 'fa-bars');
+        }
+    });
+</script>
 
 </body>
 </html>
-
-
-
-
-
-
