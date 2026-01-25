@@ -253,6 +253,7 @@ header {
     border-radius: 50px;
     transform: matrix(3px);;
 }
+.click-btn:hover { background: #0064fa; }
 
 /* Footer Styles */
 :root {
@@ -401,3 +402,4 @@ header {
     .hero h1 { font-size: 2.5rem; }
 
 }
+
