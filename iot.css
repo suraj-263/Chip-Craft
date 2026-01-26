@@ -110,7 +110,7 @@ header {
 .page-header {
     text-align: center;
     padding: 110px 50px 50px;
-    background: #ffffff;
+    background: #ffe2af;
     border-bottom: 1px solid #efc3c3;
 }
 
@@ -371,4 +371,5 @@ header {
     .nav-links {
         display: none; /* Add a burger menu for real mobile sites */
     }
+
 }
