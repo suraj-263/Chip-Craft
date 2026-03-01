@@ -316,7 +316,6 @@ std::map"String, deviceConfig_t" devices = {           //Please replace the " " 
 
     {device_ID_3, {  RelayPin3, SwitchPin3 }},
 
-
 };
 
 typedef struct {      // struct for the std::map below
@@ -352,8 +351,6 @@ void setupFlipSwitches() {
   for (auto &device : devices)  {                     // for each device (relay / flipSwitch combination)
 
     flipSwitchConfig_t flipSwitchConfig;              // create a new flipSwitch configuration
-
-
 
     flipSwitchConfig.deviceId = device.first;         // set the deviceId
 
@@ -620,11 +617,11 @@ void loop() {
                 </button>
                 <pre id="code-3"><code>
                  <span>
-#include Adafruit_GFX.h>                     // Install this library
+#include "Adafruit_GFX.h"            //Please replace the "" to <> before and after "Adafruit_GFX.h" and install the library (technical fault)
 
-#include Adafruit_SSD1306.h>              // Install this library
+#include "Adafruit_SSD1306.h"        //Please replace the "" to <> before and after "Adafruit_SSD1306.h" and install the library (technical fault)
 
-#include DHT.h>                              // Install this library
+#include "DHT.h"             //Please replace the "" to <> before and after "DHT.h" and install the library (technical fault)
 
 // OLED Display Settings
 
@@ -788,11 +785,11 @@ void loop() {
                 </button>
                 <pre id="code-4"><code>
 <span>
-#include Adafruit_GFX.h>              // Install this library
+#include "Adafruit_GFX.h"       //Please replace the "" to <> before and after "Adafruit_GFX.h" and install the library (technical fault)
 
-#include Adafruit_SSD1306.h>        // Install this library
+#include "Adafruit_SSD1306.h"   //Please replace the "" to <> before and after "Adafruit_SSD1306.h" and install the library (technical fault)
 
-#include DHT.h>                           // Install this library
+#include "DHT.h"                //Please replace the "" to <> before and after "DHT.h" and install the library (technical fault)
 
 // OLED display setup
 
@@ -944,11 +941,11 @@ void displayMessage(String msg) {
 <span>
 #include <Wire.h>
 
-#include Adafruit_GFX.h>           // Install this library
+#include "Adafruit_GFX.h"      //Please replace the "" to <> before and after "Adafruit_GFX.h" and install the library (technical fault)
 
-#include Adafruit_SSD1306.h>      // Install this library
+#include "Adafruit_SSD1306.h"      //Please replace the "" to <> before and after "Adafruit_SSD1306.h" and install the library (technical fault)
 
-#include DHT.h>                  // Install this library
+#include "DHT.h>                  //Please replace the "" to <> before and after "DHT.h" and install the library (technical fault)
 
 #define SCREEN_WIDTH 128
 
@@ -1076,9 +1073,8 @@ void loop() {
 <span>
 #include <WiFi.h>
 
-#include    HTTPClient.h>  //install the library
-
-#include   DHT.h>        //install the library
+#include    "HTTPClient.h"  //Please replace the "" to <> before and after "HTTPClient.h" and install the library (technical fault)
+#include   "DHT.h"        //Please replace the "" to <> before and after "DHT.h" and install the library (technical fault)
 
 // fill in the * indication
 
@@ -1465,6 +1461,7 @@ void loop() {
 </body>
 
 </html>
+
 
 
 
