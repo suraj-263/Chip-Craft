@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arduino Source Code </title>
+    <title>IoT Source Code </title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -209,22 +209,22 @@
             <a href="index.html" class="logo">CHIP CRAFT</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="Acode.html" style="color:blue">Arduino Code</a></li>
-                <li><a href="arduino.html">Arduino Projects</a></li> 
-                <li><a href="iot.html">IoT Projects</a></li>
+                <li><a href="Icode.html" style="color:blue">IoT Code</a></li>
+                <li><a href="iot.html">IoT Projects</a></li> 
+                <li><a href="arduino.html">Arduino Projects</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="page-header">
-        <h1>Arduino Source Code</h1>
-        <p>Explore our latest Arduino innovations and Source Code.</p>
+        <h1>IoT Source Code</h1>
+        <p>Explore our latest IoT innovations and Source Code.</p>
     </section>
 <!-- Code start here -->
         <section class="code-card">
             <div class="code-info">
-                <h2>Object detection Using Arduino and IR Sensor</h2>
-                <p>Arduino source code for Object detecton .</p>
+                <h2>Light Control by Voice Command</h2>
+                <p>Iot Source code for voice control project .</p>
             </div>
             <div class="code-wrapper">
                 <button class="copy-btn" onclick="copyCode(this, 'code-1')">
@@ -280,7 +280,7 @@ void loop() {
 
        <section class="code-card">
             <div class="code-info">
-                <h2>7 segment display Control using Arduino UNO</h2>
+                <h2>AC Light Control By Voice Command</h2>
                 <p>Arduino source code to run a 7 Segment display.</p>
             </div>
             <div class="code-wrapper">
@@ -393,7 +393,7 @@ void displayDigit(int num) {
         
         <section class="code-card">
             <div class="code-info">
-                <h2>Arduino Rain Sensor Project</h2>
+                <h2>Smart Gas And Fire Detection & Monitoring System</h2>
                 <p>Arduino source code for Rain sensor Project.</p>
             </div>
             <div class="code-wrapper">
@@ -450,7 +450,7 @@ if (rainState == LOW) {  // LOW = Rain detected (depends on sensor)
 
         <section class="code-card">
             <div class="code-info">
-                <h2>Arduino Soil Moisture Sensors Project</h2>
+                <h2>Smart Agriculture System</h2>
                 <p>Arduino source code for Soil Moisture Sensor.</p>
             </div>
             <div class="code-wrapper">
@@ -511,7 +511,7 @@ void loop() {
 
         <section class="code-card">
             <div class="code-info">
-                <h2>Arduino Flame sensor  Project</h2>
+                <h2>Smart Temperature Monitoring System</h2>
                 <p>Arduino source code for Flame Sensor.</p>
             </div>
             <div class="code-wrapper">
@@ -581,7 +581,7 @@ void loop() {
 
         <section class="code-card">
             <div class="code-info">
-                <h2>Arduino DHT 11 Sensor Project</h2>
+                <h2>Smart Weather Monitoring System</h2>
                 <p>Arduino source code for DHT 11 Sensor.</p>
             </div>
             <div class="code-wrapper">
@@ -661,7 +661,7 @@ void loop() {
 
         <section class="code-card">
             <div class="code-info">
-                <h2>Arduino OLED Display Project</h2>
+                <h2>ESP32 Gas Sensor Project</h2>
                 <p>Arduino source code to connect OLED Display</p>
             </div>
             <div class="code-wrapper">
@@ -734,294 +734,6 @@ void loop() {
             </div>
         </section>
 
-
-<!-- Another code starts from here -->
-
-        <section class="code-card">
-            <div class="code-info">
-                <h2>Arduino Gas Sensor project(MQ2)</h2>
-                <p>Arduino source code for Gas Sensor.</p>
-            </div>
-            <div class="code-wrapper">
-                <button class="copy-btn" onclick="copyCode(this, 'code-8')">
-                    <i class="far fa-copy"></i> Copy Code
-                </button>
-                <pre id="code-8"><code>
-<span>
-// Pin definitions
-
-int mq2Pin = A0;        // MQ2 sensor analog pin
-
-int ledPin = 13;          // LED pin (built-in LED on most Arduino boards)
-
-int threshold = 500;      // Adjust this value based on your environment
-
-void setup() {
-
-  Serial.begin(9600);
-
-  pinMode(ledPin, OUTPUT);
-
-}
-
-void loop() {
-
-  int sensorValue = analogRead(mq2Pin);
-
-  Serial.print("MQ2 Value: ");
-
-  Serial.println(sensorValue);
-
-   if (sensorValue > threshold) {
-
-    digitalWrite(ledPin, HIGH);   // Turn LED ON
-
-  } else {
-
-    digitalWrite(ledPin, LOW);    // Turn LED OFF
-
-  }
-
-delay(1000);
-
-}
-    </span>
-</code></pre>
-            </div>
-        </section>
-
-<!-- Another code starts from here -->
-
-        <section class="code-card">
-            <div class="code-info">
-                <h2>Arduino Object Counting Project (1 channel)</h2>
-                <p>Arduino source code for Object Counting using an IR Sensor(1).</p>
-            </div>
-            <div class="code-wrapper">
-                <button class="copy-btn" onclick="copyCode(this, 'code-9')">
-                    <i class="far fa-copy"></i> Copy Code
-                </button>
-                <pre id="code-9"><code>
-<span>
-// IR sensor pin
-
-int irPin = 2;
-
-// 7-segment pins: a, b, c, d, e, f, g
-
-int segPins[7] = {3, 4, 5, 6, 7, 8, 9};
-
-// Number patterns for COMMON ANODE
-
-// 0 = ON, 1 = OFF
-
-byte numbers[10][7] = {
-
-  {0,0,0,0,0,0,1}, // 0
-
-  {1,0,0,1,1,1,1}, // 1
-
-  {0,0,1,0,0,1,0}, // 2
-
-  {0,0,0,0,1,1,0}, // 3
-
-  {1,0,0,1,1,0,0}, // 4
-
-  {0,1,0,0,1,0,0}, // 5
-
-  {0,1,0,0,0,0,0}, // 6
-
-  {0,0,0,1,1,1,1}, // 7
-
-  {0,0,0,0,0,0,0}, // 8
-
-  {0,0,0,0,1,0,0}  // 9
-
-};
-
-int count = 0;
-
-bool lastState = HIGH;
-
-void setup() {
-
-  pinMode(irPin, INPUT);
-
-  for (int i = 0; i < 7; i++) {
-
-    pinMode(segPins[i], OUTPUT);
-
-  }
-
-  displayNumber(count);
-
-}
-
-void loop() {
-
-  bool currentState = digitalRead(irPin);
-
-  // Detect object (HIGH → LOW)
-
-  if (lastState == HIGH && currentState == LOW) {
-
-    count++;
-
-    if (count > 9) count = 0;
-
-    displayNumber(count);
-
-    delay(300);   // debounce
-
-  }
-
-lastState = currentState;
-
-}
-
-void displayNumber(int num) {
-
-  for (int i = 0; i < 7; i++) {
-
-    digitalWrite(segPins[i], numbers[num][i]);
-
-  }
-
-}
-    </span>
-</code></pre>
-            </div>
-        </section>
-        </section> 
-
-        <!-- Another code starts from here -->
-
-        <section class="code-card">
-            <div class="code-info">
-                <h2>Arduino Object Counting Project (2 channel)</h2>
-                <p>Arduino source code for Object Counting Using an IR Sensor (2).</p>
-            </div>
-            <div class="code-wrapper">
-                <button class="copy-btn" onclick="copyCode(this, 'code-10')">
-                    <i class="far fa-copy"></i> Copy Code
-                </button>
-                <pre id="code-10"><code>
-<span>
-// IR sensor pins
-
-int irInc = 2;    // Increment sensor
-
-int irDec = 10;   // Decrement sensor
-
-// 7-segment pins: a b c d e f g
-
-int segPins[7] = {3, 4, 5, 6, 7, 8, 9};
-
-// Common Anode number patterns
-
-// 0 = ON, 1 = OFF
-
-byte numbers[10][7] = {
-
-  {0,0,0,0,0,0,1}, // 0
-
-  {1,0,0,1,1,1,1}, // 1
-
-  {0,0,1,0,0,1,0}, // 2
-
-  {0,0,0,0,1,1,0}, // 3
-
-  {1,0,0,1,1,0,0}, // 4
-
-  {0,1,0,0,1,0,0}, // 5
-
-  {0,1,0,0,0,0,0}, // 6
-
-  {0,0,0,1,1,1,1}, // 7
-
-  {0,0,0,0,0,0,0}, // 8
-
-  {0,0,0,0,1,0,0}  // 9
-
-};
-
-int count = 0;
-
-bool lastIncState = HIGH;
-
-bool lastDecState = HIGH;
-
-void setup() {
-
-  pinMode(irInc, INPUT);
-
-  pinMode(irDec, INPUT);
-
-for (int i = 0; i < 7; i++) {
-
-    pinMode(segPins[i], OUTPUT);
-
-  }
-
-  displayNumber(count);
-
-}
-
-void loop() {
-
-  bool incState = digitalRead(irInc);
-
-  bool decState = digitalRead(irDec);
-
-// Increment logic
-
-  if (lastIncState == HIGH && incState == LOW) {
-
-    count++;
-
-    if (count > 9) count = 9;
-
-    displayNumber(count);
-
-    delay(300);
-
-  }
-
-// Decrement logic
-
-  if (lastDecState == HIGH && decState == LOW) {
-
-    count--;
-
-    if (count < 0) count = 0;
-
-    displayNumber(count);
-
-    delay(300);
-
-  }
-
-  lastIncState = incState;
-
-  lastDecState = decState;
-
-}
-
-void displayNumber(int num) {
-
-  for (int i = 0; i < 7; i++) {
-
-    digitalWrite(segPins[i], numbers[num][i]);
-
-  }
-
-}
-    </span>
-</code></pre>
-            </div>
-        </section>
-        </section> 
-
 <!-- Another code start from Here -->
         <!-- <section class="code-card">
             <div class="code-info">
@@ -1034,7 +746,7 @@ void displayNumber(int num) {
                 </button>
                 <pre id="code-6"><code>
 <span>
-
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!write code here
     </span>
 </code></pre>
             </div>
@@ -1320,3 +1032,4 @@ void displayNumber(int num) {
 
 </body>
 </html>
+
