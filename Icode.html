@@ -234,14 +234,16 @@
 <span>
 // ESP32 Google Assistant + Alexa + Manual Home Automation with Sinric Pro
 
-#include Arduino.h>       //Please add "<" before Arduino.h and install the library (technical fault)
-#include WiFi.h>         //Please add "<" before Wifi.h and install the library (technical fault)
 
-#include "SinricPro.h"       //Please add "<" before Arduino.h and install the library (technical fault)
+#include "Arduino.h"           //Please replace the "" to <> before and after Arduino.h and install the library (technical fault)
+
+#include "WiFi.h"            //Please replace the "" to <> before and after Wifi.h and install the library (technical fault)
+
+#include "SinricPro.h"                        //SinricPro Library
 
 #include "SinricProSwitch.h"
 
-#include map>
+#include "map"                        //Please replace the "" to <> before and after map and install the library (technical fault)
 
 // Uncomment the following line to enable serial debug output
 
@@ -305,7 +307,7 @@ typedef struct {      // struct for the std::map below
 
 } deviceConfig_t;
 
-std::map<String, deviceConfig_t> devices = {
+std::map"String, deviceConfig_t" devices = {     //Please replace the "" to <> before and after "String, deviceConfig_t" and install the library (technical fault)
 
     //{deviceId, {relayPIN,  flipSwitchPIN}}
 
@@ -314,6 +316,7 @@ std::map<String, deviceConfig_t> devices = {
     {device_ID_2, {  RelayPin2, SwitchPin2 }},
 
     {device_ID_3, {  RelayPin3, SwitchPin3 }},
+
 
 };
 
@@ -327,9 +330,10 @@ typedef struct {      // struct for the std::map below
 
 } flipSwitchConfig_t;
 
-std::map<int, flipSwitchConfig_t> flipSwitches;    // this map is used to map flipSwitch PINs to deviceId and handling debounce and last flipSwitch state checks
+std::map"int, flipSwitchConfig_t" flipSwitches;     //Please replace the "" to <> before and after "int, flipSwitchConfig_t" and install the library (technical fault)
+                                                   // this map is used to map flipSwitch PINs to deviceId and handling debounce and last flipSwitch state checks
+                                                  // it will be set up in the "setupFlipSwitches" function, using information from the devices map
 
-                                                  // it will be set up in the "setupFlipSwitches" function, using information from the evices map
 
 void setupRelays() {
 
@@ -351,6 +355,8 @@ void setupFlipSwitches() {
 
     flipSwitchConfig_t flipSwitchConfig;              // create a new flipSwitch configuration
 
+
+
     flipSwitchConfig.deviceId = device.first;         // set the deviceId
 
     flipSwitchConfig.lastFlipSwitchChange = 0;        // set debounce time
@@ -371,7 +377,7 @@ bool onPowerState(String deviceId, bool &state)
 
 {
 
-  Serial.printf("%s: %s\r\n", deviceId.c_str(), state ? "on" : "off");
+  Serial.printf("%s: %s\r\n", deviceId.c_str(), state ? "on": "off");
 
   int relayPIN = devices[deviceId].relayPIN; // get the relay pin for corresponding device
 
@@ -445,6 +451,8 @@ void setupWiFi()
 
   WiFi.begin(WIFI_SSID, WIFI_PASS);
 
+
+
   while (WiFi.status() != WL_CONNECTED)
 
   {
@@ -465,7 +473,7 @@ void setupSinricPro()
 
 {
 
-  for (auto &device : devices)
+  for (auto &device: devices)
 
   {
 
@@ -511,10 +519,7 @@ void loop()
 
   handleFlipSwitches();
 
-}</span>
-</code></pre>
-            </div>
-        </section>
+}
 
 <!-- Another code starts from here -->
 
@@ -1462,6 +1467,7 @@ void loop() {
 </body>
 
 </html>
+
 
 
 
