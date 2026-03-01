@@ -234,10 +234,6 @@
 <span>
 // ESP32 Google Assistant + Alexa + Manual Home Automation with Sinric Pro
 
-
-
-
-
 #include <Arduino.h>                          //ArduinoJson Library
 
 #include <WiFi.h>
@@ -248,13 +244,9 @@
 
 #include <map>
 
-
-
 // Uncomment the following line to enable serial debug output
 
 //#define ENABLE_DEBUG
-
-
 
 #ifdef ENABLE_DEBUG
 
@@ -266,8 +258,6 @@
 
 #endif
 
-
-
 #define WIFI_SSID         "*****************"      //Enter Wi-Fi Name
 
 #define WIFI_PASS         "****************"      //Enter Wi-Fi Password
@@ -275,8 +265,6 @@
 #define APP_KEY           "********************************"                  //Enter APP-KEY
 
 #define APP_SECRET        "*****************************************************"     //Enter APP-SECRET
-
-
 
 //Enter the device IDs here
 
@@ -286,10 +274,6 @@
 
 #define device_ID_3   "*************************"  //SWITCH 3 ID
 
-
-
-
-
 // define the GPIO connected with Relays and switches
 
 #define RelayPin1 15  //D15
@@ -298,35 +282,21 @@
 
 #define RelayPin3 4  //D4
 
-
-
 #define SwitchPin1 23  //D23
 
 #define SwitchPin2 22  //D22
 
 #define SwitchPin3 21  //D21
 
-
-
-
-
 #define wifiLed   2   //D2
-
-
 
 //uncomment the following line if you use Push Buttons to toggle Relays
 
 //#define TACTILE_BUTTON 1
 
-
-
 #define BAUD_RATE   9600
 
-
-
 #define DEBOUNCE_TIME 250
-
-
 
 typedef struct {      // struct for the std::map below
 
@@ -335,10 +305,6 @@ typedef struct {      // struct for the std::map below
   int flipSwitchPIN;
 
 } deviceConfig_t;
-
-
-
-
 
 std::map<String, deviceConfig_t> devices = {
 
@@ -350,11 +316,7 @@ std::map<String, deviceConfig_t> devices = {
 
     {device_ID_3, {  RelayPin3, SwitchPin3 }},
 
-         
-
 };
-
-
 
 typedef struct {      // struct for the std::map below
 
@@ -366,13 +328,9 @@ typedef struct {      // struct for the std::map below
 
 } flipSwitchConfig_t;
 
-
-
 std::map<int, flipSwitchConfig_t> flipSwitches;    // this map is used to map flipSwitch PINs to deviceId and handling debounce and last flipSwitch state checks
 
                                                   // it will be setup in "setupFlipSwitches" function, using informations from devices map
-
-
 
 void setupRelays() {
 
@@ -388,15 +346,11 @@ void setupRelays() {
 
 }
 
-
-
 void setupFlipSwitches() {
 
   for (auto &device : devices)  {                     // for each device (relay / flipSwitch combination)
 
     flipSwitchConfig_t flipSwitchConfig;              // create a new flipSwitch configuration
-
-
 
     flipSwitchConfig.deviceId = device.first;         // set the deviceId
 
@@ -404,11 +358,7 @@ void setupFlipSwitches() {
 
     flipSwitchConfig.lastFlipSwitchState = false;     // set lastFlipSwitchState to false (LOW)--
 
-
-
     int flipSwitchPIN = device.second.flipSwitchPIN;  // get the flipSwitchPIN
-
-
 
     flipSwitches[flipSwitchPIN] = flipSwitchConfig;   // save the flipSwitch config to flipSwitches map
 
@@ -417,8 +367,6 @@ void setupFlipSwitches() {
   }
 
 }
-
-
 
 bool onPowerState(String deviceId, bool &state)
 
@@ -434,8 +382,6 @@ bool onPowerState(String deviceId, bool &state)
 
 }
 
-
-
 void handleFlipSwitches() {
 
   unsigned long actualMillis = millis();                                          // get actual millis
@@ -444,11 +390,7 @@ void handleFlipSwitches() {
 
     unsigned long lastFlipSwitchChange = flipSwitch.second.lastFlipSwitchChange;  // get the timestamp when flipSwitch was pressed last time (used to debounce / limit events)
 
-
-
     if (actualMillis - lastFlipSwitchChange > DEBOUNCE_TIME) {                    // if time is > debounce time...
-
-
 
       int flipSwitchPIN = flipSwitch.first;                                       // get the flipSwitch pin from configuration
 
@@ -474,8 +416,6 @@ void handleFlipSwitches() {
 
           digitalWrite(relayPIN, newRelayState);                                  // set the trelay to the new state
 
-
-
           SinricProSwitch &mySwitch = SinricPro[deviceId];                        // get Switch device from SinricPro
 
           mySwitch.sendPowerStateEvent(!newRelayState);                            // send the event
@@ -496,8 +436,6 @@ void handleFlipSwitches() {
 
 }
 
-
-
 void setupWiFi()
 
 {
@@ -505,8 +443,6 @@ void setupWiFi()
   Serial.printf("\r\n[Wifi]: Connecting");
 
   WiFi.begin(WIFI_SSID, WIFI_PASS);
-
-
 
   while (WiFi.status() != WL_CONNECTED)
 
@@ -524,8 +460,6 @@ void setupWiFi()
 
 }
 
-
-
 void setupSinricPro()
 
 {
@@ -542,15 +476,11 @@ void setupSinricPro()
 
   }
 
-
-
   SinricPro.begin(APP_KEY, APP_SECRET);
 
   SinricPro.restoreDeviceStates(true);
 
 }
-
-
 
 void setup()
 
@@ -558,13 +488,9 @@ void setup()
 
   Serial.begin(BAUD_RATE);
 
-
-
   pinMode(wifiLed, OUTPUT);
 
   digitalWrite(wifiLed, LOW);
-
-
 
   setupRelays();
 
@@ -576,8 +502,6 @@ void setup()
 
 }
 
-
-
 void loop()
 
 {
@@ -585,7 +509,7 @@ void loop()
   SinricPro.handle();
 
   handleFlipSwitches();
-
+}
 }</span>
 </code></pre>
             </div>
@@ -604,101 +528,79 @@ void loop()
                 </button>
                 <pre id="code-2"><code>
 <span>
-    // Pin Definitions for Common Anode 7-Segment Display
-const int segA = 2;
+   // Define pin numbers for convenience
 
-const int segB = 3;
+const int pin3 = 3;
 
-const int segC = 4;
+const int pin12 = 12;
 
-const int segD = 5;
+const int pin4 = 4;
 
-const int segE = 6;
+const int pin11 = 11;
 
-const int segF = 7;
+const int pin5 = 5;
 
-const int segG = 8;
+const int pin10 = 10;
 
-// Array to represent digits 0-9 for 7-segment display
 
-// The segments are in the order: {A, B, C, D, E, F, G}
-
-int digits[10][7] = {
-
-  {LOW, LOW, LOW, LOW, LOW, LOW, HIGH},  // 0
-
-  {HIGH, LOW, LOW, HIGH, HIGH, HIGH, HIGH}, // 1
-
-  {LOW, LOW, HIGH, LOW, LOW, HIGH, LOW},  // 2
-
-  {LOW, LOW, LOW, LOW, HIGH, HIGH, LOW},  // 3
-
-  {HIGH, LOW, LOW, HIGH, HIGH, LOW, LOW},  // 4
-
-  {LOW, HIGH, LOW, LOW, HIGH, LOW, LOW},  // 5
-
-  {LOW, HIGH, LOW, LOW, LOW, LOW, LOW},   // 6
-
-  {LOW, LOW, LOW, HIGH, HIGH, HIGH, HIGH},// 7
-
-  {LOW, LOW, LOW, LOW, LOW, LOW, LOW},    // 8
-
-  {LOW, LOW, LOW, LOW, HIGH, LOW, LOW}    // 9
-
-};
 
 void setup() {
 
-  // Set the 7-segment display pins as output
+  // Set the pin modes for input (for 3, 4, 5) and output (for 10, 11, 12)
 
-  pinMode(segA, OUTPUT);
+  pinMode(pin3, INPUT);
 
-  pinMode(segB, OUTPUT);
+  pinMode(pin12, OUTPUT);
 
-  pinMode(segC, OUTPUT);
+  pinMode(pin4, INPUT);
 
-  pinMode(segD, OUTPUT);
+  pinMode(pin11, OUTPUT);
 
-  pinMode(segE, OUTPUT);
+  pinMode(pin5, INPUT);
 
-  pinMode(segF, OUTPUT);
-
-  pinMode(segG, OUTPUT);
+  pinMode(pin10, OUTPUT);
 
 }
 
 void loop() {
 
-  for (int i = 0; i < 10; i++) {
+  // Check if the signal on pins 3, 4, or 5 is high
 
-    displayDigit(i);  // Display the digit on the 7-segment display
+  if (digitalRead(pin3) == HIGH) {
 
-    delay(1000);      // Wait for 1 second
+    digitalWrite(pin12, HIGH);
+
+  } else {
+
+    digitalWrite(pin12, LOW);
 
   }
 
+  if (digitalRead(pin4) == HIGH) {
+
+    digitalWrite(pin11, HIGH);
+
+  } else {
+
+    digitalWrite(pin11, LOW);
+
+  }
+
+  if (digitalRead(pin5) == HIGH) {
+
+    digitalWrite(pin10, HIGH);
+
+  } else {
+
+    digitalWrite(pin10, LOW);
+
+  }
+
+  // Add a small delay to debounce the inputs
+
+  delay(50);
+
 }
-
-// Function to display a digit on the 7-segment display
-
-void displayDigit(int num) {
-
-  // Loop through each segment and set its state based on the digit
-
-  digitalWrite(segA, digits[num][0]);
-
-  digitalWrite(segB, digits[num][1]);
-
-  digitalWrite(segC, digits[num][2]);
-
-  digitalWrite(segD, digits[num][3]);
-
-  digitalWrite(segE, digits[num][4]);
-
-  digitalWrite(segF, digits[num][5]);
-
-  digitalWrite(segG, digits[num][6]);
-
 }</span>
 </code></pre>
             </div>
@@ -718,41 +620,155 @@ void displayDigit(int num) {
                 <pre id="code-3"><code>
                  <span>
 
-// Pin definitions
+/#include <Adafruit_GFX.h>                     // Install this library
 
-#define RAIN_SENSOR_PIN 2 // Digital output from rain sensor
+#include <Adafruit_SSD1306.h>              // Install this library
 
-#define LED_PIN 13        // LED pin
+#include <DHT.h>                              // Install this library
+
+// OLED Display Settings
+
+#define SCREEN_WIDTH 128
+
+#define SCREEN_HEIGHT 64
+
+#define OLED_RESET    -1
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+// DHT11
+
+#define DHTPIN 4
+
+#define DHTTYPE DHT11
+
+DHT dht(DHTPIN, DHTTYPE);
+
+// Sensors Analog Pins
+
+#define MQ2_PIN 34
+
+#define MQ6_PIN 35
+
+#define MQ135_PIN 32
+
+#define FLAME_PIN 33
+
+#define BATTERY_PIN 36  // ADC1_CH0 (VP)
+
+// Voltage divider resistors (R1=100k, R2=100k)
+
+#define BATTERY_RATIO 2.0
+
+#define ADC_RESOLUTION 4095.0
+
+#define REF_VOLTAGE 3.3
+
+//BUZZER
+
+#define BUZZER_PIN 5
 
 void setup() {
 
-  pinMode(RAIN_SENSOR_PIN, INPUT); // Rain sensor input
+  Serial.begin(115200);
 
-  pinMode(LED_PIN, OUTPUT);        // LED output
+  dht.begin();
 
-  Serial.begin(9600);              // Optional: Serial monitor
+ // Initialize OLED
+
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+
+    Serial.println(F("SSD1306 allocation failed"));
+
+    while (1);
+
+  }
+
+  display.clearDisplay();
+
+ // Sensor pins
+
+  pinMode(FLAME_PIN, INPUT);
+
+  pinMode(BUZZER_PIN, OUTPUT);
 
 }
 
 void loop() {
 
-  int rainState = digitalRead(RAIN_SENSOR_PIN);
+  // Read Sensors
 
-if (rainState == LOW) {  // LOW = Rain detected (depends on sensor)
+  float temperature = dht.readTemperature();
 
-    digitalWrite(LED_PIN, HIGH); // Turn LED on
+  float humidity = dht.readHumidity();
 
-    Serial.println("Rain detected!");
+  int mq2 = analogRead(MQ2_PIN);
+
+  int mq6 = analogRead(MQ6_PIN);
+
+  int mq135 = analogRead(MQ135_PIN);
+
+  int flame = digitalRead(FLAME_PIN);
+
+  //BUZZER
+
+    if (flame == LOW) { // Flame detected
+
+    digitalWrite(BUZZER_PIN, HIGH);
+
+    Serial.println("Flame detected! Buzzer ON.");
+
+    display.println("Buzzer ON.");
 
   } else {
 
-    digitalWrite(LED_PIN, LOW);  // Turn LED off
+    digitalWrite(BUZZER_PIN, LOW);
 
-    Serial.println("No rain");
+    Serial.println("No flame. Buzzer OFF.");
+
+    display.println("Buzzer OFF.");
 
   }
 
-  delay(500); // Check every 0.5 seconds
+  // Battery voltage
+
+  int rawADC = analogRead(BATTERY_PIN);
+
+  float batteryVolt = (rawADC / ADC_RESOLUTION) * REF_VOLTAGE * BATTERY_RATIO;
+
+  // Serial Monitor
+
+  Serial.printf("Temp: %.1f C, Humidity: %.1f %%\n", temperature, humidity);
+
+  Serial.printf("MQ2: %d, MQ6: %d, MQ135: %d, Flame: %s\n", mq2, mq6, mq135, flame == LOW ? "DETECTED" : "Safe");
+
+  Serial.printf("Battery Voltage: %.2f V\n", batteryVolt);
+
+ // OLED Display
+
+  display.clearDisplay();
+
+  display.setTextSize(1);
+
+  display.setTextColor(SSD1306_WHITE);
+
+  display.setCursor(0, 0);
+
+  display.printf("Temp:%.1f C Hum:%.1f%%\n", temperature, humidity);
+
+  display.printf("MQ2: %d\n", mq2);
+
+  display.printf("MQ6: %d\n", mq6);
+
+  display.printf("MQ135: %d\n", mq135);
+
+  display.printf("Flame: %s\n", flame == LOW ? "ALERT!" : "Normal");
+
+  display.printf("Battery: %.2f V\n", batteryVolt);
+
+  display.display();
+
+  delay(2000); // Refresh every 2 seconds
 
 }
 
@@ -775,48 +791,143 @@ if (rainState == LOW) {  // LOW = Rain detected (depends on sensor)
                 <pre id="code-4"><code>
 <span>
 
-// Soil Moisture Indicator using LED
+#include <Adafruit_GFX.h>               // Install this library
 
-// Reads analog input from soil sensor and turns on LED when soil is dry
+#include <Adafruit_SSD1306.h>         // Install this library
 
-int sensorPin = A0;     // Analog input pin for soil sensor
+#include <DHT.h>                            // Install this library
 
-int ledPin = 13;        // Digital output pin for LED
+// OLED display setup
 
-int sensorValue = 0;    // Variable to store sensor reading
+#define SCREEN_WIDTH 128
 
-int threshold = 500;    // Threshold value (adjust based on your sensor & soil type)
+#define SCREEN_HEIGHT 64
+
+#define OLED_RESET    -1
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+// DHT11 setup
+
+#define DHTPIN 4         // GPIO pin for DHT11
+
+#define DHTTYPE DHT11
+
+DHT dht(DHTPIN, DHTTYPE);
+
+// Pin Definitions
+
+#define SOIL_MOISTURE_PIN 34  // Analog pin
+
+#define RAIN_SENSOR_PIN    35  // Analog pin
+
+#define RELAY_PIN          26  // Relay connected to pump
+
+// Battery check (optional)
+
+#define BATTERY_PIN        33  // ADC1 channel for battery voltage
 
 void setup() {
 
-  pinMode(ledPin, OUTPUT);   // Set LED pin as output
+  Serial.begin(115200);
 
-  Serial.begin(9600);        // Start serial monitor
+// Initialize display
+
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+
+    Serial.println("SSD1306 not found");
+
+    for (;;);
+
+  }
+
+ display.clearDisplay();
+
+  display.setTextSize(1);
+
+  display.setTextColor(SSD1306_WHITE);
+
+  dht.begin();
+
+pinMode(RELAY_PIN, OUTPUT);
+
+  digitalWrite(RELAY_PIN, LOW); // Keep pump off initially
+
+ displayMessage("System Initializing...");
 
 }
 
 void loop() {
 
-  sensorValue = analogRead(sensorPin); // Read analog value from sensor
+  delay(2000);
 
-  Serial.print("Soil Moisture: ");
+// Read DHT11
 
-  Serial.println(sensorValue);         // Print sensor value for calibration
+  float temp = dht.readTemperature();
 
-  // When soil is dry (sensorValue > threshold)
+  float hum = dht.readHumidity();
 
-  if (sensorValue > threshold) {
+ // Read soil moisture (0 dry - 4095 wet for ESP32 ADC)
 
-    digitalWrite(ledPin, HIGH);  // Turn LED ON
+  int soilRaw = analogRead(SOIL_MOISTURE_PIN);
+
+  float soilPercent = map(soilRaw, 4095, 0, 0, 100); // Calibrated for ESP32
+
+ // Read rain sensor
+
+  int rainRaw = analogRead(RAIN_SENSOR_PIN);
+
+  bool isRaining = rainRaw < 2000; // Tune threshold as needed
+
+// Battery voltage read (optional)
+
+  float batteryVoltage = analogRead(BATTERY_PIN) * (3.3 / 4095.0) * 2; // if using voltage divider
+
+// Show data on OLED
+
+  display.clearDisplay();
+
+  display.setCursor(0,0);
+
+  display.printf("Temp: %.1f C\n", temp);
+
+  display.printf("Hum: %.1f %%\n", hum);
+
+  display.printf("Soil: %.0f %%\n", soilPercent);
+
+  display.printf("Rain: %s\n", isRaining ? "Yes" : "No");
+
+  display.printf("Pump: %s\n", (soilPercent < 30 && !isRaining) ? "ON" : "OFF");
+
+  display.printf("Battery: %.2f V", batteryVoltage);
+
+  display.display();
+
+ // Pump control logic
+
+  if (soilPercent < 30 && !isRaining) {
+
+    digitalWrite(26, LOW);  // Turn on pump
 
   } else {
 
-    digitalWrite(ledPin, LOW);   // Turn LED OFF
+    digitalWrite(26, HIGH);   // Turn off pump
 
   }
 
-  delay(1000);  // Wait 1 second before next reading
+}
 
+void displayMessage(String msg) {
+
+  display.clearDisplay();
+
+  display.setCursor(0, 0);
+
+  display.println(msg);
+
+  display.display();
+
+}
 }</span>
 </code></pre>
             </div>
@@ -835,57 +946,137 @@ void loop() {
                 </button>
                 <pre id="code-5"><code>
 <span>
-// Flame Sensor with LED and Buzzer Alert
+#include <Wire.h>
 
-// Pin Definitions
+#include <Adafruit_GFX.h>
 
-int flameSensor = 2;   // Digital pin connected to flame sensor output
+#include <Adafruit_SSD1306.h>
 
-int buzzer = 8;        // Buzzer pin
+#include <DHT.h>
 
-int led = 13;          // LED pin
 
-int flameState = HIGH; // HIGH means no flame detected initially
+
+#define SCREEN_WIDTH 128
+
+#define SCREEN_HEIGHT 64
+
+#define OLED_RESET    -1
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+
+
+// DHT11 settings
+
+#define DHTPIN 2     // Pin connected to DATA of DHT11
+
+#define DHTTYPE DHT11
+
+DHT dht(DHTPIN, DHTTYPE);
+
+
 
 void setup() {
 
-  pinMode(flameSensor, INPUT);  // Flame sensor input
+  Serial.begin(9600);
 
-  pinMode(buzzer, OUTPUT);      // Buzzer output
+  dht.begin();
 
-  pinMode(led, OUTPUT);         // LED output
 
-  Serial.begin(9600);           // Start serial communication
 
-  Serial.println("Flame Sensor Test Started...");
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+
+    Serial.println(F("SSD1306 allocation failed"));
+
+    for(;;);
+
+  }
+
+  display.clearDisplay();
+
+  display.setTextSize(1);
+
+  display.setTextColor(SSD1306_WHITE);
 
 }
 
+
+
 void loop() {
 
-  flameState = digitalRead(flameSensor); // Read flame sensor output
+  // Read temperature and humidity
 
-  if (flameState == LOW) {  // Flame detected (active LOW)
+  float humidity = dht.readHumidity();
 
-    Serial.println("🔥 Flame detected!");
+  float temperature = dht.readTemperature(); // Celsius
 
-    digitalWrite(buzzer, HIGH); // Turn on buzzer
 
-    digitalWrite(led, HIGH);    // Turn on LED
 
-    delay(100);                 // Small delay
+  // Check if any reads failed
 
-  } else {
+  if (isnan(humidity) || isnan(temperature)) {
 
-    Serial.println("✅ No flame detected");
+    Serial.println(F("Failed to read from DHT sensor!"));
 
-    digitalWrite(buzzer, LOW);  // Turn off buzzer
+    display.clearDisplay();
 
-    digitalWrite(led, LOW);     // Turn off LED
+    display.setCursor(0, 20);
 
-    delay(500);
+    display.println(F("Sensor Error"));
+
+    display.display();
+
+    delay(2000);
+
+    return;
 
   }
+
+
+
+  // Print to Serial Monitor
+
+  Serial.print(F("Humidity: "));
+
+  Serial.print(humidity);
+
+  Serial.print(F("%  Temperature: "));
+
+  Serial.print(temperature);
+
+  Serial.println(F("°C"));
+
+
+
+  // Display on OLED
+
+  display.clearDisplay();
+
+  display.setCursor(0, 0);
+
+  display.println(F("Temp & Humidity"));
+
+  display.setCursor(0, 25);
+
+  display.print(F("Temp: "));
+
+  display.print(temperature);
+
+  display.println(F(" C"));
+
+  display.setCursor(0, 45);
+
+  display.print(F("Hum:  "));
+
+  display.print(humidity);
+
+  display.println(F(" %"));
+
+
+
+  display.display();
+
+  delay(2000); // Update every 2 seconds
 
 }
 </span>
@@ -905,66 +1096,103 @@ void loop() {
                 </button>
                 <pre id="code-6"><code>
 <span>
-#include "DHT.h"
+#include <WiFi.h>
 
-// Define DHT pin and type
+#include <HTTPClient.h>  //install the library
 
-#define DHTPIN 2       // DHT11 data pin connected to Arduino digital pin 2
+#include <DHT.h>        //install the library
 
-#define DHTTYPE DHT11  // DHT 11 sensor
 
-// Initialize DHT sensor
+
+// fill in the * indication
+
+ 
+
+// ---------- WiFi ----------
+
+const char* ssid = "********************";    // write your wifi ssid
+
+const char* password = "****************";   // write your wifi Password
+
+
+
+// ---------- ThingSpeak ----------
+
+String apiKey = "********************";     // write the apikey from thingspeak.com
+
+const char* server = "http://api.thingspeak.com/update";
+
+
+
+// ---------- DHT11 ----------
+
+#define DHTPIN 4
+
+#define DHTTYPE DHT11
 
 DHT dht(DHTPIN, DHTTYPE);
 
 void setup() {
 
-  Serial.begin(9600);
-
-  Serial.println("DHT11 Temperature and Humidity Sensor");
+  Serial.begin(115200);
 
   dht.begin();
+
+  WiFi.begin(ssid, password);
+
+  Serial.print("Connecting");
+
+  while (WiFi.status() != WL_CONNECTED) {
+
+    delay(500);
+
+    Serial.print(".");
+
+  }
+
+  Serial.println("\nWiFi Connected");
 
 }
 
 void loop() {
 
-  // Wait a few seconds between measurements
+  float temp = dht.readTemperature();
 
-  delay(2000);
+  float hum = dht.readHumidity();
 
-// Reading temperature and humidity
+  if (isnan(temp) || isnan(hum)) {
 
-  float humidity = dht.readHumidity();
+    Serial.println("DHT Error");
 
-  float temperature = dht.readTemperature(); // Default in °C
-
-  // float temperatureF = dht.readTemperature(true); // Use for Fahrenheit
-
- // Check if readings are valid
-
-  if (isnan(humidity) || isnan(temperature)) {
-
-    Serial.println("Failed to read from DHT sensor!");
+    delay(2000);
 
     return;
 
   }
 
- // Display readings on Serial Monitor
+  if (WiFi.status() == WL_CONNECTED) {
 
-  Serial.print("Humidity: ");
+    HTTPClient http;
 
-  Serial.print(humidity);
+    String url = server + String("?api_key=") + apiKey +
 
-  Serial.print(" %\t");
+                 "&field1=" + String(temp) +
 
-  Serial.print("Temperature: ");
+                 "&field2=" + String(hum);
 
-  Serial.print(temperature);
+    http.begin(url);
 
-  Serial.println(" °C");
+    int httpCode = http.GET();
 
+    http.end();
+
+    Serial.println("Data Sent to ThingSpeak");
+
+  }
+
+  delay(15000);   // ThingSpeak needs minimum 15 sec delay
+
+}
 }</span>
 </code></pre>
             </div>
@@ -985,63 +1213,155 @@ void loop() {
                 </button>
                 <pre id="code-7"><code>
 <span>
-#include Wire.h>                //install the library
+#include <Adafruit_GFX.h>                     // Install this library
 
-#include Adafruit_GFX.h>       //install the library
+#include <Adafruit_SSD1306.h>              // Install this library
 
-#include Adafruit_SSD1306.h>  //install the library
+#include <DHT.h>                              // Install this library
 
-// OLED display width and height, in pixels
+// OLED Display Settings
 
 #define SCREEN_WIDTH 128
 
 #define SCREEN_HEIGHT 64
 
-// Create display object (for I2C, default address 0x3C)
+#define OLED_RESET    -1
 
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+// DHT11
+
+#define DHTPIN 4
+
+#define DHTTYPE DHT11
+
+DHT dht(DHTPIN, DHTTYPE);
+
+// Sensors Analog Pins
+
+#define MQ2_PIN 34
+
+#define MQ6_PIN 35
+
+#define MQ135_PIN 32
+
+#define FLAME_PIN 33
+
+#define BATTERY_PIN 36  // ADC1_CH0 (VP)
+
+// Voltage divider resistors (R1=100k, R2=100k)
+
+#define BATTERY_RATIO 2.0
+
+#define ADC_RESOLUTION 4095.0
+
+#define REF_VOLTAGE 3.3
+
+//BUZZER
+
+#define BUZZER_PIN 5
 
 void setup() {
 
-  // Initialize the display
+  Serial.begin(115200);
 
-  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // 0x3C is the default I2C address
+  dht.begin();
 
-    Serial.begin(9600);
+ // Initialize OLED
+
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
 
     Serial.println(F("SSD1306 allocation failed"));
 
-    for (;;); // Don't proceed, loop forever
+    while (1);
 
   }
 
-  // Clear the buffer
-
   display.clearDisplay();
 
-  // Set text color and size
+ // Sensor pins
 
-  display.setTextSize(2);      // Text size (1 = small, 2 = medium, etc.)
+  pinMode(FLAME_PIN, INPUT);
 
-  display.setTextColor(SSD1306_WHITE);
-
-  display.setCursor(10, 25);   // Position on screen (x, y)
-
-  // Print text
-
-  display.println("Hello,");
-
-  display.println("World!");
-
-  // Display the text
-
-  display.display();
+  pinMode(BUZZER_PIN, OUTPUT);
 
 }
 
 void loop() {
 
-  // Nothing to do here
+  // Read Sensors
+
+  float temperature = dht.readTemperature();
+
+  float humidity = dht.readHumidity();
+
+  int mq2 = analogRead(MQ2_PIN);
+
+  int mq6 = analogRead(MQ6_PIN);
+
+  int mq135 = analogRead(MQ135_PIN);
+
+  int flame = digitalRead(FLAME_PIN);
+
+  //BUZZER
+
+    if (flame == LOW) { // Flame detected
+
+    digitalWrite(BUZZER_PIN, HIGH);
+
+    Serial.println("Flame detected! Buzzer ON.");
+
+    display.println("Buzzer ON.");
+
+  } else {
+
+    digitalWrite(BUZZER_PIN, LOW);
+
+    Serial.println("No flame. Buzzer OFF.");
+
+    display.println("Buzzer OFF.");
+
+  }
+
+  // Battery voltage
+
+  int rawADC = analogRead(BATTERY_PIN);
+
+  float batteryVolt = (rawADC / ADC_RESOLUTION) * REF_VOLTAGE * BATTERY_RATIO;
+
+  // Serial Monitor
+
+  Serial.printf("Temp: %.1f C, Humidity: %.1f %%\n", temperature, humidity);
+
+  Serial.printf("MQ2: %d, MQ6: %d, MQ135: %d, Flame: %s\n", mq2, mq6, mq135, flame == LOW ? "DETECTED" : "Safe");
+
+  Serial.printf("Battery Voltage: %.2f V\n", batteryVolt);
+
+ // OLED Display
+
+  display.clearDisplay();
+
+  display.setTextSize(1);
+
+  display.setTextColor(SSD1306_WHITE);
+
+  display.setCursor(0, 0);
+
+  display.printf("Temp:%.1f C Hum:%.1f%%\n", temperature, humidity);
+
+  display.printf("MQ2: %d\n", mq2);
+
+  display.printf("MQ6: %d\n", mq6);
+
+  display.printf("MQ135: %d\n", mq135);
+
+  display.printf("Flame: %s\n", flame == LOW ? "ALERT!" : "Normal");
+
+  display.printf("Battery: %.2f V\n", batteryVolt);
+
+  display.display();
+
+  delay(2000); // Refresh every 2 seconds
 
 }
     </span>
@@ -1347,5 +1667,6 @@ void loop() {
 
 </body>
 </html>
+
 
 
