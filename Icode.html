@@ -234,15 +234,15 @@
 <span>
 // ESP32 Google Assistant + Alexa + Manual Home Automation with Sinric Pro
 
-#include <Arduino.h>                          //ArduinoJson Library
+#include "Arduino.h"     //please replace the '' '' to <> before and after of "Arduino.h" and install the library
 
-#include <WiFi.h>
+#include "WiFi.h"       //please replace the '' '' to <> before and after of "Wifi.h" and install the library
 
-#include "SinricPro.h"                        //SinricPro Library
+#include "SinricPro.h"                        //Install SinricPro Library
 
 #include "SinricProSwitch.h"
 
-#include <map>
+#include "map"          //please replace the '' '' to <> before and after of "map" and install the library
 
 // Uncomment the following line to enable serial debug output
 
@@ -306,7 +306,7 @@ typedef struct {      // struct for the std::map below
 
 } deviceConfig_t;
 
-std::map<String, deviceConfig_t> devices = {
+std::map"String, deviceConfig_t" devices = {     //please replace the '' '' to <> before and after of "String, deviceConfig_t" and install the library
 
     //{deviceId, {relayPIN,  flipSwitchPIN}}
 
@@ -328,8 +328,8 @@ typedef struct {      // struct for the std::map below
 
 } flipSwitchConfig_t;
 
-std::map<int, flipSwitchConfig_t> flipSwitches;    // this map is used to map flipSwitch PINs to deviceId and handling debounce and last flipSwitch state checks
-
+std::map"int, flipSwitchConfig_t" flipSwitches;   //please replace the '' '' to <> before and after of "int, flipSwitchConfig_t" and install the library 
+                                                  // this map is used to map flipSwitch PINs to deviceId and handling debounce and last flipSwitch state checks
                                                   // it will be setup in "setupFlipSwitches" function, using informations from devices map
 
 void setupRelays() {
@@ -541,9 +541,7 @@ const int pin11 = 11;
 const int pin5 = 5;
 
 const int pin10 = 10;
-
-
-
+    
 void setup() {
 
   // Set the pin modes for input (for 3, 4, 5) and output (for 10, 11, 12)
@@ -620,11 +618,11 @@ void loop() {
                 <pre id="code-3"><code>
                  <span>
 
-/#include <Adafruit_GFX.h>                     // Install this library
+/#include "Adafruit_GFX.h"          //please replace the '' '' to <> before and after "Adafruit_GFX.h" and install the library
 
-#include <Adafruit_SSD1306.h>              // Install this library
+#include "Adafruit_SSD1306.h"         //please replace the '' '' to <> before and after "Adafruit_SSD1306.h" and install the library
 
-#include <DHT.h>                              // Install this library
+#include "DHT.h"                     //please replace the '' '' to <> before and after "DHT.h" and install the library
 
 // OLED Display Settings
 
@@ -791,11 +789,11 @@ void loop() {
                 <pre id="code-4"><code>
 <span>
 
-#include <Adafruit_GFX.h>               // Install this library
+#include "Adafruit_GFX.h"              //please replace the '' '' to <> before and after of "Adafruit_GFX.h" and install the library
 
-#include <Adafruit_SSD1306.h>         // Install this library
+#include "Adafruit_SSD1306.h"         //please replace the '' '' to <> before and after of "Adafruit_SSD1306.h" and install the library
 
-#include <DHT.h>                            // Install this library
+#include "DHT.h"                           //please replace the '' '' to <> before and after "DHT.h" and install the library
 
 // OLED display setup
 
@@ -946,15 +944,13 @@ void displayMessage(String msg) {
                 </button>
                 <pre id="code-5"><code>
 <span>
-#include <Wire.h>
+#include "Wire.h"            //please replace the '' '' to <> before and after of "Wire.h" and install the library
 
-#include <Adafruit_GFX.h>
+#include "Adafruit_GFX.h"         //please replace the '' '' to <> before and after of "Adafruit_GFX.h" and install the library
 
-#include <Adafruit_SSD1306.h>
+#include "Adafruit_SSD1306.h"       //please replace the '' '' to <> before and after of "Adafruit_SSD1306.h" and install the library
 
-#include <DHT.h>
-
-
+#include "DHT.h"                       //please replace the '' '' to <> before and after of "DHT.h" and install the library
 
 #define SCREEN_WIDTH 128
 
@@ -964,8 +960,6 @@ void displayMessage(String msg) {
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-
-
 // DHT11 settings
 
 #define DHTPIN 2     // Pin connected to DATA of DHT11
@@ -974,15 +968,11 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 DHT dht(DHTPIN, DHTTYPE);
 
-
-
-void setup() {
+    void setup() {
 
   Serial.begin(9600);
 
   dht.begin();
-
-
 
   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
 
@@ -1000,8 +990,6 @@ void setup() {
 
 }
 
-
-
 void loop() {
 
   // Read temperature and humidity
@@ -1009,8 +997,6 @@ void loop() {
   float humidity = dht.readHumidity();
 
   float temperature = dht.readTemperature(); // Celsius
-
-
 
   // Check if any reads failed
 
@@ -1032,8 +1018,6 @@ void loop() {
 
   }
 
-
-
   // Print to Serial Monitor
 
   Serial.print(F("Humidity: "));
@@ -1045,8 +1029,6 @@ void loop() {
   Serial.print(temperature);
 
   Serial.println(F("°C"));
-
-
 
   // Display on OLED
 
@@ -1072,8 +1054,6 @@ void loop() {
 
   display.println(F(" %"));
 
-
-
   display.display();
 
   delay(2000); // Update every 2 seconds
@@ -1096,17 +1076,13 @@ void loop() {
                 </button>
                 <pre id="code-6"><code>
 <span>
-#include <WiFi.h>
+#include "WiFi.h"            //please replace the '' '' to <> before and after of "Wifi.h" and install the library        
 
-#include <HTTPClient.h>  //install the library
+#include "HTTPClient.h"  //please replace the '' '' to <> before and after of "HTTPClient.h" and install the library
 
-#include <DHT.h>        //install the library
-
-
+#include "DHT.h"        //please replace the '' '' to <> before and after of "DHT.h" and install the library
 
 // fill in the * indication
-
- 
 
 // ---------- WiFi ----------
 
@@ -1114,15 +1090,11 @@ const char* ssid = "********************";    // write your wifi ssid
 
 const char* password = "****************";   // write your wifi Password
 
-
-
 // ---------- ThingSpeak ----------
 
 String apiKey = "********************";     // write the apikey from thingspeak.com
 
 const char* server = "http://api.thingspeak.com/update";
-
-
 
 // ---------- DHT11 ----------
 
@@ -1198,8 +1170,6 @@ void loop() {
             </div>
         </section>
 
-
-
 <!-- Another code starts from here -->
 
         <section class="code-card">
@@ -1213,11 +1183,11 @@ void loop() {
                 </button>
                 <pre id="code-7"><code>
 <span>
-#include <Adafruit_GFX.h>                     // Install this library
+#include "Adafruit_GFX.h"            //please replace the '' '' to <> before and after of "Adafruit_GFX.h" and install the library
 
-#include <Adafruit_SSD1306.h>              // Install this library
+#include "Adafruit_SSD1306.h"        //please replace the '' '' to <> before and after of "Adafruit_SSD1306.h" and install the library
 
-#include <DHT.h>                              // Install this library
+#include "DHT.h"                     //please replace the '' '' to <> before and after of "DHT.h" and install the library
 
 // OLED Display Settings
 
@@ -1667,6 +1637,7 @@ void loop() {
 
 </body>
 </html>
+
 
 
 
