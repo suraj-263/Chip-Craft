@@ -77,6 +77,22 @@
                     <button class="close-btn" aria-label="Close image" onclick="closeImage()">
       <span aria-hidden="true">&times;</span>
     </button>
+                    <script>
+    // Action: Completely hides the image container
+    function closeImage() {
+      const container = document.getElementById('myImageWrapper');
+      container.classList.add('hidden');
+    }
+
+    // ALTERNATIVE Action: If you prefer to MINIMIZE (shrink) instead of hide, 
+    // replace the function above with this one:
+    /*
+    function closeImage() {
+      const container = document.getElementById('myImageWrapper');
+      container.classList.toggle('minimized');
+    }
+    */
+  </script>
                 </div>
             </div>
         </div>
