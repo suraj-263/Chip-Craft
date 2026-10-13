@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #84b5e6;
+    background: url('22.jpg') center/cover fixed no-repeat;
     color: #333;
     line-height: 1.6;
 }
@@ -110,19 +110,25 @@ header {
 .page-header {
     text-align: center;
     padding: 110px 50px 50px;
-    background: #ffe2af;
-    border-bottom: 1px solid #efc3c3;
+    background: rgba(10, 10, 15, 0.50);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    margin: 20px auto 30px;
+    width: min(1200px, 90%);
 }
 
 .page-header h1 {
     font-size: 3.5rem;
-    color: #000000;
+    color: #ffffff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
 }
 
 .page-header p {
     font-size: medium;
-    color: #000000;
+    color: #ffffff;
     margin-top: 10px;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
 }
 
 /* Project Rows */
@@ -135,11 +141,12 @@ header {
 .project-row {
     display: flex;
     align-items: center;
-    background: rgb(188, 245, 227);
+    background: transparent;
+    border: none;
     margin-bottom: 40px;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: none;
     transition: transform 0.3s ease;
 }
 
@@ -161,23 +168,30 @@ header {
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 15px;
 }
 
 .project-info {
     flex: 1;
     padding: 40px;
+    background: rgba(18, 18, 24, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
 .project-info h2 {
     font-size: 1.8rem;
     margin-bottom: 15px;
-    color: #007bff;
+    color: #ffffff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
 }
 
 .project-info h4 {
     margin-bottom: 10px;
-    color: #555;
+    color: #f1f5ff;
     font-weight: 600;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
 }
 
 .project-info ul {
@@ -189,7 +203,8 @@ header {
     position: relative;
     padding-left: 25px;
     margin-bottom: 8px;
-    color: #666;
+    color: #ffffff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
 }
 
 .project-info ul li::before {
