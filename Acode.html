@@ -25,7 +25,7 @@
         }
 
         body {
-            background-color: var(--bg-light);
+            background: url('23.jpg') center/cover no-repeat fixed;
             color: var(--text-dark);
             line-height: 1.6;
         }
@@ -78,8 +78,14 @@
 .page-header {
     text-align: center;
     padding: 110px 50px 50px;
-    background: #bdd2e9;
-    border-bottom: 1px solid #efc3c3;
+    margin: 0 auto 40px;
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .page-header h1 {
@@ -112,23 +118,26 @@
 
         /* Code Card */
         .code-card {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 40px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .code-info h2 {
             font-size: 1.5rem;
             margin-bottom: 10px;
-            color: #222;
+            color: #ffffff;
             border-left: 5px solid var(--primary-blue);
             padding-left: 15px;
         }
 
         .code-info p {
-            color: #666;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 25px;
             font-size: 0.95rem;
         }
@@ -136,7 +145,7 @@
         /* Code Block Area */
         .code-wrapper {
             position: relative;
-            background: var(--code-bg);
+            background: #1e1e1e;
             border-radius: 8px;
             padding: 20px;
             overflow-x: auto;
@@ -163,7 +172,7 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(255,255,255,0.1);
+            background: transparent;
             border: 1px solid rgba(255,255,255,0.2);
             color: #fff;
             padding: 6px 15px;
@@ -188,7 +197,7 @@
 
         /* Footer */
         footer {
-            background: #111;
+            background: transparent;
             color: #fff;
             padding: 40px 0;
             text-align: center;
@@ -1088,7 +1097,7 @@ void displayNumber(int num) {
 
         /* Main Footer Container */
         .site-footer {
-            background-color: var(--footer-bg);
+            background-color: transparent;
             color: var(--footer-text);
             padding: 80px 0 0;
             border-top: 5px solid var(--accent-blue);
@@ -1144,7 +1153,7 @@ void displayNumber(int num) {
         .social-links a {
             width: 40px;
             height: 40px;
-            background: #222;
+            background: transparent;
             color: #fff;
             display: flex;
             align-items: center;
@@ -1198,7 +1207,7 @@ void displayNumber(int num) {
 
         /* Footer Bottom Bar */
         .footer-bottom {
-            background-color: var(--footer-bottom-bg);
+            background-color: transparent;
             padding: 25px 0;
             margin-top: 60px;
             border-top: 1px solid #222;
@@ -1320,5 +1329,3 @@ void displayNumber(int num) {
 
 </body>
 </html>
-
-

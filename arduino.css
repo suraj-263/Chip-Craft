@@ -1,9 +1,13 @@
 /* Reuse general styles from previous pages (Reset, Navbar, etc.) */
 
+body {
+    background: url('21.jpg') center/cover no-repeat fixed;
+}
+
 /* Arduino Hero Section */
 .arduino-hero {
     height: 300px;
-    background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500') center/cover;
+    background: transparent;
     position: relative;
     display: flex;
     align-items: center;
@@ -13,7 +17,7 @@
 }
 
 .hero-overlay {
-    background: rgba(0, 0, 0, 0.5);
+    background: transparent;
     padding: 40px;
     border-radius: 10px;
 }
@@ -25,7 +29,7 @@
     transform: translateX(-50%);
     width: 90%;
     max-width: 1200px;
-    background: wheat; /* Semi-transparent */
+    background: rgba(255, 255, 255, 0.72);
     backdrop-filter: blur(10px); /* Blur effect */
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -65,9 +69,16 @@
         /* Page Header */
 .page-header {
     text-align: center;
-    padding: 110px 50px 50px;
-    background: #ffffff;
-    border-bottom: 1px solid #efc3c3;
+    width: 90%;
+    max-width: 1200px;
+    margin: 110px auto 0;
+    padding: 35px 50px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 .page-header h1 {
@@ -94,10 +105,13 @@
 
 /* Card Styling */
 .arduino-card {
-    background: rgb(170, 243, 189);
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.85);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     transition: 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -170,13 +184,13 @@
 
 .view-btn {
     text-align: center;
-    background: #f8f9fa;
+    background: rgba(255, 255, 255, 0.72);
     color: #333;
     text-decoration: none;
     padding: 10px;
     border-radius: 6px;
     font-weight: 600;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(255, 255, 255, 0.85);
     transition: 0.3s;
 }
 
@@ -335,6 +349,3 @@
     }
 
 }
-
-
-
