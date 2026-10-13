@@ -1,9 +1,13 @@
 /* Reuse core styles (Navbar, Footer) from previous files */
 
+body {
+    background: url('20.jpg') center/cover no-repeat fixed;
+}
+
 .section-title {
     text-align: center;
     padding: 60px 20px;
-    background: #fdfdfd;
+    background: transparent;
 }
 
 .section-title h1 {
@@ -26,7 +30,7 @@
     transform: translateX(-50%);
     width: 90%;
     max-width: 1200px;
-    background: wheat; /* Semi-transparent */
+    background: rgba(255, 255, 255, 0.72);
     backdrop-filter: blur(10px); /* Blur effect */
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -66,8 +70,8 @@
 .page-header {
     text-align: center;
     padding: 110px 40px 40px;
-    background: #eecbcb;
-    border-bottom: 1px solid #efc3c3;
+    background: transparent;
+    border-bottom: none;
 }
 
 .page-header h1 {
@@ -93,11 +97,13 @@
 
 /* Diagram Card */
 .diagram-card {
-    background: white;
-    border: 1px solid #eee;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.85);
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .diagram-card:hover {
@@ -109,7 +115,7 @@
 .diagram-img-container {
     position: relative;
     height: 250px;
-    background: #f9f9f9;
+    background: rgba(255, 255, 255, 0.8);
     overflow: hidden;
 }
 
@@ -174,19 +180,37 @@
 }
 
 .diagram-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border: 1px solid #007bff;
+    border-radius: 6px;
+    background: #007bff;
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 600;
-    color: #555;
-    transition: 0.2s;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
 }
 
-.diagram-actions a:hover {
-    color: #007bff;
+.diagram-actions a:hover,
+.diagram-actions a:focus-visible {
+    background: #0056b3;
+    border-color: #0056b3;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.diagram-actions a:focus-visible {
+    outline: 3px solid rgba(0, 123, 255, 0.35);
+    outline-offset: 3px;
 }
 
 .diagram-actions a i {
-    margin-right: 5px;
+    pointer-events: none;
 }
 
 /* Footer Styles */
@@ -199,7 +223,7 @@
 }
 
 .site-footer {
-    background-color: var(--footer-bg);
+    background-color: transparent;
     color: var(--footer-text);
     padding-top: 60px;
     font-family: 'Poppins', sans-serif;
@@ -293,7 +317,7 @@ padding-left: 30px;
 
 /* Bottom Bar */
 .footer-bottom {
-    background-color: var(--footer-bottom);
+    background-color: transparent;
     padding: 20px 0;
     margin-top: 30px;
     font-size: 0.85rem;
