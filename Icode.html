@@ -117,12 +117,18 @@
         .code-card {
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
+            border-radius: 18px;
             padding: 30px;
+            margin-left: 24px;
+            margin-right: 24px;
             margin-bottom: 40px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.15);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+        }
+
+        .page-header + .code-card {
+            margin-top: 40px;
         }
 
         .code-info h2 {
@@ -144,7 +150,7 @@
         .code-wrapper {
             position: relative;
             background: var(--code-bg);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 20px;
             overflow-x: auto;
         }
@@ -206,6 +212,11 @@
         @media (max-width: 600px) {
             .page-title h1 { font-size: 1.8rem; }
             .nav-links { display: none; }
+            .code-card {
+                margin-left: 12px;
+                margin-right: 12px;
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -1644,8 +1655,6 @@ void loop() {
 
 </body>
 </html>
-
-
 
 
 
