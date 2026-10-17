@@ -1,7 +1,13 @@
 /* Reuse core styles (Navbar, Footer) from previous files */
 
 body {
-    background: url('20.jpg') center/cover no-repeat fixed;
+    background-color: #0b0f1a;
+    background-image: linear-gradient(rgba(11, 15, 26, 0.72), rgba(11, 15, 26, 0.72)), url('20.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #eaeef8;
 }
 
 .section-title {
@@ -88,13 +94,13 @@ body {
 
 .page-header h1 {
     font-size: 3.5rem;
-    color: #000000;
+    color: #ffffff;
     margin: 0;
 }
 
 .page-header p {
     font-size: medium;
-    color: #000000;
+    color: #e5edf7;
     margin-top: 10px;
     margin-bottom: 0;
 }
