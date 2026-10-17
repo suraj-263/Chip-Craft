@@ -74,15 +74,29 @@ body {
     border-bottom: none;
 }
 
+.page-header-content {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 26px 32px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
 .page-header h1 {
     font-size: 3.5rem;
     color: #000000;
+    margin: 0;
 }
 
 .page-header p {
     font-size: medium;
     color: #000000;
     margin-top: 10px;
+    margin-bottom: 0;
 }
 
 /* Gallery Grid */
