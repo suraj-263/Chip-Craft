@@ -7,34 +7,48 @@
 }
 
 body {
-    background-color: #a5f8dc;
+    position: relative;
+    isolation: isolate;
+    background-color: #dfe3e8;
     color: #333;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: url('main.png') center / cover no-repeat;
+    filter: grayscale(1) brightness(0.35);
 }
 
 /* Navbar */
 /* Modern Navigation Bar */
 header {
     position: fixed;
-    top: 20px;
+    top: 18px;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
+    width: min(92%, 1200px);
     max-width: 1200px;
-    background: rgba(255, 255, 255, 0.92); /* Semi-transparent */
-    backdrop-filter: blur(50px); /* Blur effect */
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50px; /* Pill shape */
-    padding: 10px 30px;
+    background: rgba(235, 243, 252, 0.84);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border: 1px solid rgba(125, 180, 235, 0.55);
+    border-radius: 22px;
+    padding: 14px 28px;
     z-index: 1000;
-    box-shadow: 0 3px 32px rgb(3, 217, 255);
+    box-shadow: 0 12px 35px rgba(21, 33, 58, 0.24),
+                0 0 22px rgba(59, 130, 246, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
 
 
 /* Logo Styling */
@@ -42,7 +56,7 @@ header {
     font-size: 20px;
     font-weight: 800;
     letter-spacing: 1px;
-    color: #1a1a1a;
+    color: #4b5563;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -69,11 +83,12 @@ header {
 
 .nav-links a {
     text-decoration: none;
-    color: #555;
+    color: #555f6d;
     font-size: 15px;
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
+    letter-spacing: 0.2px;
 }
 
 .nav-links a:hover, .nav-links a.active {
@@ -86,7 +101,7 @@ header {
 
 .nav-links a {
     text-decoration: none;
-    color: #444;
+    color: #555f6d;
     font-weight: 500;
     transition: 0.3s;
 }
@@ -99,12 +114,13 @@ header {
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: -6px;
     left: 0;
     width: 0;
     height: 2px;
-    background: #007bff;
-    transition: width 0.3s;
+    background: linear-gradient(90deg, #7dd3fc, #3b82f6);
+    border-radius: 999px;
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover::after {
@@ -120,24 +136,63 @@ header {
 
 /* Dropdown logic */
 .dropdown-menu {
-    display: none;
+    display: block;
     position: absolute;
-    background: #fff;
     top: 100%;
     left: 0;
     min-width: 180px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 8px;
+    margin-top: 8px;
+    list-style: none;
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    border-radius: 8px;
+    box-shadow: 0 10px 24px rgba(17, 24, 39, 0.14);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links .dropdown-menu a {
     display: block;
+    padding: 10px 14px;
+    border-radius: 5px;
+    color: #4b5563;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.nav-links .dropdown-menu a::after {
+    display: none;
+}
+
+.nav-links .dropdown-menu a:hover,
+.nav-links .dropdown-menu a:focus-visible {
+    color: #1f2937;
+    background: rgba(255, 255, 255, 0.38);
 }
 
 
 /* Mobile Menu Toggle Styling */
 .menu-toggle {
     display: none; /* Hidden on Desktop */
-    color: rgb(5, 5, 5);
+    color: #555f6d;
     font-size: 24px;
     cursor: pointer;
 }
@@ -173,12 +228,19 @@ header {
 
     /* Ensure dropdowns work on mobile tap */
     .dropdown-menu {
-        position: relative;
-        background: #ffffff00;
+        position: static;
+        min-width: 0;
+        margin: 6px 20px 0;
+        padding: 6px;
+        background: rgba(255, 255, 255, 0.58);
         display: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
     }
 
-    .dropdown:hover .dropdown-menu {
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
         display: block;
     }
     
@@ -240,21 +302,50 @@ header {
 /* Hero Section */
 .hero {
     height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('main.png');
-    background-size: cover;
-    background-position: center;
-    margin: auto;
-    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 5% 30px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
+    gap: 40px;
+    text-align: left;
+    color: #fff;
 }
 
 .hero h1 { font-size: 4rem; margin-bottom: 10px; }
 .hero p { font-size: 1.2rem; margin-bottom: 20px; }
 .hero-btns { margin-top: 30px; }
+
+.robot-glass {
+    width: 100%;
+    height: min(65vh, 620px);
+    min-height: 320px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 28px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.robot-glass spline-viewer {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-content {
+    max-width: 650px;
+    padding: 36px 44px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 24px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
 
 .hero-btn {
     display: inline-block;
@@ -274,14 +365,15 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    padding: 60px 5%;
+    padding: 80px 5%;
 }
 
 .project-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
     transition: 0.3s;
 }
 
@@ -293,9 +385,16 @@ header {
     object-fit: cover;
 }
 
-.card-info { padding: 20px; text-align: center; }
-.card-info h2 { margin-bottom: 10px; color: #333; }
-.card-info p { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
+.card-info {
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+.card-info h2 { margin-bottom: 10px; color: #ffffff; }
+.card-info p { font-size: 0.9rem; color: rgba(255,255,255,0.78); margin-bottom: 20px; }
 
 .click-btn {
     display: inline-block;
@@ -453,6 +552,23 @@ header {
 @media (max-width: 768px) {
     .nav-links { display: none; } /* You would add a hamburger menu here */
     .hero h1 { font-size: 2.5rem; }
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 110px 6% 50px;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+    }
+    .robot-glass {
+        width: min(100%, 480px);
+        height: 38vh;
+        min-height: 240px;
+        margin: 0 auto;
+    }
+    .hero-content {
+        max-width: 100%;
+        padding: 28px 20px;
+    }
 
 }
-
